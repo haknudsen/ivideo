@@ -1,0 +1,30 @@
+/* Scss Document */
+@function char($character-code) {
+  @if function-exists("selector-append") {
+    @return unquote("\"\\#{$character-code}\"");
+  }
+
+  @return str-slice("\x", 1, 1) + $character-code;
+}
+$fa-icons: (
+		play: 'f144',
+		pause: 'f28b',
+		stop:'f28d',
+		restart:'f2ea',
+		mute: 'f6a9',
+		unmute: 'f028',
+		fullscreen-enter: 'f424',
+		fullscreen-exit: 'f422'
+);
+@each $name, $fa- in $fa-icons {
+	.btn-#{$name}{
+		font-family: "Font Awesome 5 Pro";
+		font-weight: normal;
+		font-style: normal;
+		cursor: pointer;
+		-webkit-font-smoothing:antialiased;
+		&:before {
+			content: char($fa-);
+		}
+	}
+}

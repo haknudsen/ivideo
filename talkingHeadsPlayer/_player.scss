@@ -1,0 +1,135 @@
+/* Scss Document */
+
+$btnWidth: 2rem;
+$bigPlayBtn-height: 76px;
+$bigPlayBtn-width: 160px;
+#player-holder {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	&:hover #controls {
+		opacity: 1
+	}
+    overflow: hidden;
+}
+#talking-head-player {}
+#controls {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+	bottom: 0;
+	top: auto;
+	font-size: 2rem;
+	background: rgba($primary, .8);
+	border: rgba($dark, .8) thin solid;
+	border-radius: 2px;
+	color: $light;
+	transition: opacity 0.5s;
+	opacity: 0;
+	@media (min-width: 768px) {
+		font-size: 1.8rem;
+	}
+	.player-btn {
+		width: $btnWidth;
+		margin-left: 4px;
+	}
+	#progress-bar {
+		margin: auto 6px;
+		border: thin solid $dark;
+		height: $btnWidth;
+		@media (max-width: 500px) {
+			height: $btnWidth/2;
+		}
+	}
+	#btn-mute {
+		width: $btnWidth * 1.5;
+	}
+	#volume-bar {
+		margin: auto 0 auto 8px;
+		width: 120px;
+	}
+	#time {
+		padding: 0 4px;
+		margin: auto 0;
+		line-height: 1;
+		font-family: $font-family-monospace
+	}
+}
+#bigPlayBtn, .bigPlayBtn {
+	height: $bigPlayBtn-height;
+	width: $bigPlayBtn-width;
+	display: block;
+	position: absolute;
+	padding: 0;
+	cursor: pointer;
+	opacity: 0.9;
+	left: calc(50% - (#{$bigPlayBtn-width}/2));
+	top: calc(50% - (#{$bigPlayBtn-height}/2));
+	margin: auto;
+	border-radius: 16px;
+	border: 3px solid rgba($primary, .7);
+	background-color: rgba($dark, .7);
+	transition: background-color 0.5s ease;
+	transition: border-color 0.5s ease;
+	&:hover {
+		background-color: rgba($primary, .7);
+		border-color: rgba($dark, .7);
+	}
+	&:before {
+		position: absolute;
+		content: url(http://www.live-spokesperson.com/images/BigPlayBtn.gif);
+		left: calc(50% - (#{128px}/2));
+		top: calc(50% - (#{64px}/2));
+        @media (max-width: 576px) {
+            position: absolute;
+            content: url(https://www.websitetalkingheads.com/ivideo/SmallPlayBtn.gif);
+            left: calc(50% - (64px/2));
+            top: calc(50% - (32px/2));
+        }
+	}    
+    @media (max-width: 576px) {
+            height: 38px;
+            width: 80px;
+            left: calc(50% - (80px/2));
+            top: calc(50% - (38px/2));
+    }
+}
+.smallPlayBtn {
+	height: $btnWidth*2;
+	width: $btnWidth*2;
+	font-size: $btnWidth;
+	color: white;
+	display: block;
+	position: absolute;
+	padding: 0;
+	cursor: pointer;
+	opacity: 1;
+    left: 50%;
+    top: 45%;
+	transform: translate(-45%, -50%);
+	margin: auto;
+	border-radius: 50%;
+	border: 3px solid rgba($primary, .7);
+	background-color: rgba($dark, .7);
+	transition: all 0.5s ease;
+    &:before{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+	transform: translate(-50%, -50%);
+    }
+	&:hover {
+		background-color: rgba($primary, .7);
+		border-color: rgba($dark, .7);
+	}
+	@media (min-width: 1300px) {
+	height: $btnWidth;
+	width: $btnWidth;
+	font-size: $btnWidth/2;
+	}
+}
