@@ -1,0 +1,1 @@
+@charset "utf-8";@media (max-width: 576px){#bigPlayBtn{height:38px;width:80px;left:calc(50% - (80px/2));top:calc(50% - (38px/2))}#bigPlayBtn:before{position:absolute;content:url(https://www.websitetalkingheads.com/ivideo/SmallPlayBtn.gif);left:calc(50% - (64px/2));top:calc(50% - (32px/2))}}
