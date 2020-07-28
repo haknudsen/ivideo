@@ -24,16 +24,12 @@ $bigPlayBtn-width: 160px;
 	position: absolute;
 	bottom: 0;
 	top: auto;
-	font-size: 2rem;
 	background: rgba($primary, .8);
 	border: rgba($dark, .8) thin solid;
 	border-radius: 2px;
 	color: $light;
 	transition: opacity 0.5s;
 	opacity: 0;
-	@media (min-width: 768px) {
-		font-size: 1.8rem;
-	}
 	.player-btn {
 		width: $btnWidth;
 		margin: 4px 2px;
@@ -41,7 +37,7 @@ $bigPlayBtn-width: 160px;
         color: $light;
 	}
 	#progress-bar {
-		margin: auto 6px;
+		margin: 2px 6px;
 		border: thin solid $dark;
 		height: $btnWidth;
 		@media (max-width: 500px) {
@@ -49,8 +45,7 @@ $bigPlayBtn-width: 160px;
 		}
 	}
 	#volume-bar {
-		margin: auto 0 auto 8px;
-        background: $dark;
+		margin: 2px 4px;
 	}
 	#time {
 		padding: 0 4px;
