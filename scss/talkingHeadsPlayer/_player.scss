@@ -36,7 +36,8 @@ $bigPlayBtn-width: 160px;
 	}
 	.player-btn {
 		width: $btnWidth;
-		margin-left: 4px;
+		margin: 4px 2px;
+        fill:white;
 	}
 	#progress-bar {
 		margin: auto 6px;
