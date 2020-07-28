@@ -37,7 +37,8 @@ $bigPlayBtn-width: 160px;
 	.player-btn {
 		width: $btnWidth;
 		margin: 4px 2px;
-        fill:white;
+        fill: $light;
+        color: $light;
 	}
 	#progress-bar {
 		margin: auto 6px;
@@ -47,12 +48,9 @@ $bigPlayBtn-width: 160px;
 			height: $btnWidth/2;
 		}
 	}
-	#btn-mute {
-		width: $btnWidth * 1.5;
-	}
 	#volume-bar {
 		margin: auto 0 auto 8px;
-		width: 120px;
+        background: $dark;
 	}
 	#time {
 		padding: 0 4px;
