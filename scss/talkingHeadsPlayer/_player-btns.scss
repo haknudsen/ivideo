@@ -18,7 +18,7 @@ $player-btns: (
 );
 @each $name, $img in $player-btns {
 	.btn-#{$name}{
-        background: url("btns/#{$img}-light.svg") no-repeat;
+        background: url("btns/#{$img}-regular.svg") no-repeat;
         background-size: contain;
         cursor: pointer;
 	}
