@@ -33,16 +33,24 @@ $bigPlayBtn-width: 160px;
 	opacity: 0;
 	.player-btn {
 		width: $btnWidth;
-		margin: 4px 2px;
+		margin: 4px 2px;        
+      &:hover {
+          opacity: .7;
+      }
 	}
 	#progress-bar {
 		margin: 2px 6px;
-		border: thin solid $dark;
 		height: $btnWidth;
+        box-shadow: 1px 1px 1px $dark, 0px 0px 1px $primary;
+        border-radius: 1.3px;
+        border: 0.2px solid $light;
 		@media (max-width: 500px) {
 			height: $btnWidth/2;
 		}
 	}
+    .progress{
+        background-color: $secondary;
+    }
 	#volume-bar {
 		margin: 2px 4px;
 	}

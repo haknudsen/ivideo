@@ -14,7 +14,6 @@
 <body>
 <div id="player-holder">
     <video id="talking-head-player" preload playsinline width="100%">
-        <source src="" type="video/mp4">
         <p>Your browser does not support the video tag. Please Visit
             <a href="https://www.websitetalkingheads.com/support/" title="Please Visit Support">
                 https://www.websitetalkingheads.com/support/
@@ -26,7 +25,7 @@
         <div id="btn-restart" class="player-btn btn-restart" title="replay" accesskey="R"></div>
         <div id="btn-play-toggle" class="player-btn btn-play" title="play" accesskey="P"></div>
         <div id="btn-stop" class="player-btn btn-stop" title="stop" accesskey="X"></div>
-        <input type="range" id="volume-bar" title="volume" min="0" max="1" step="0.1" value="1">
+        <input type="range" id="volume-bar" title="volume" min="0" max="1" step="0.01" value="1">
         <div id="btn-mute" class="player-btn btn-mute" title="mute"></div>
         <div class="progress" id="progress-bar" title="duration">
             <div id="progress" class="progress-bar progress-bar-striped" title="current time"></div>
