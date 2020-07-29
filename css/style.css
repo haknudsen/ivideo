@@ -8310,7 +8310,7 @@ a.text-dark:hover, a.text-dark:focus {
   position: absolute;
   bottom: 0;
   top: auto;
-  background: rgba(0, 123, 255, 0.75);
+  background: rgba(0, 123, 255, 0.9);
   border: #005180 thin solid;
   border-radius: 2px;
   color: #C4EAFF;
