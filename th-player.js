@@ -50,7 +50,7 @@ function setProgressBar() {
 }
 
 function createTalkingHead(title, autostart, controls, actor) {
-  let path, videoPath, posterPath;
+  let path, videoPath, posterPath, captionPath;
   //Create Player Object
   if (autostart === undefined) {
     autostart = "mouse";
@@ -67,6 +67,7 @@ function createTalkingHead(title, autostart, controls, actor) {
     videoPath = "videos/";
     posterPath = "posters/";
   }
+  captionPath = "captions/";
   if (sessionStorage.volume) {
     player.volume = sessionStorage.volume;
     volumeBar.val(sessionStorage.volume);
@@ -79,6 +80,19 @@ function createTalkingHead(title, autostart, controls, actor) {
   th.attr("poster", talkingHeadsVideo.poster);
   th.attr("src", talkingHeadsVideo.video);
   setProgressBar();
+  //-----------------------Check for CC
+  if (!actor) {
+    var url = path + captionPath + title + ".vtt";
+        CheckUrl( url  );
+    async function CheckUrl(url) {
+      const response = await fetch(url, {
+        method: "head",
+        mode: "no-cors"
+      });
+        console.log(response  );
+      return response.status == 200;
+    }
+  }
   //-------------------------------Set Controls
   switch (talkingHeadsVideo.controls) {
     case "true":
@@ -220,7 +234,7 @@ function createTalkingHead(title, autostart, controls, actor) {
             goFullScreen();
             break;
           default:
-          //  console.log("click default-" + event.target.id);
+            //  console.log("click default-" + event.target.id);
         }
       }
     });
