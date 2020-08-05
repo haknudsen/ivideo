@@ -26,7 +26,7 @@
         <div id="btn-play-toggle" class="player-btn btn-play" title="play" accesskey="P"></div>
         <div id="btn-stop" class="player-btn btn-stop" title="stop" accesskey="X"></div>
         <input type="range" id="volume-bar" title="volume" min="0" max="1" step="0.01" value="1">
-        <div id="btn-mute" class="player-btn btn-mute" title="mute"></div>
+        <div id="btn-mute" class="player-btn btn-unmute" title="mute"></div>
         <div class="progress" id="progress-bar" title="duration">
             <div id="progress" class="progress-bar progress-bar-striped" title="current time"></div>
         </div>

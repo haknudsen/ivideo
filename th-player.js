@@ -50,7 +50,7 @@ function setProgressBar() {
 }
 
 function createTalkingHead(title, autostart, controls, actor) {
-  let path, videoPath, posterPath, captionPath;
+  let path, videoPath, posterPath;
   //Create Player Object
   if (autostart === undefined) {
     autostart = "mouse";
@@ -67,7 +67,6 @@ function createTalkingHead(title, autostart, controls, actor) {
     videoPath = "videos/";
     posterPath = "posters/";
   }
-  captionPath = "captions/";
   if (sessionStorage.volume) {
     player.volume = sessionStorage.volume;
     volumeBar.val(sessionStorage.volume);
@@ -82,14 +81,17 @@ function createTalkingHead(title, autostart, controls, actor) {
   setProgressBar();
   //-----------------------Check for CC
   if (!actor) {
-    var url = path + captionPath + title + ".vtt";
-        CheckUrl( url  );
+    var url = "https://www.websitetalkingheads.com/ivideo/captions/" + title + ".vtt";
+    var captions = CheckUrl(url);
+    if( captions ){
+        var track = '<track src="'+ url +'" label="English" kind="captions" srclang="en-us" default >';
+        th.prepend(track);
+    }
     async function CheckUrl(url) {
       const response = await fetch(url, {
         method: "head",
         mode: "no-cors"
       });
-        console.log(response  );
       return response.status == 200;
     }
   }
