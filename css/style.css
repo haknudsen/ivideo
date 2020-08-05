@@ -8269,6 +8269,12 @@ a.text-dark:hover, a.text-dark:focus {
   cursor: pointer;
 }
 
+.btn-captions-off {
+  background: url("btns/captioning-regular.svg") no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
 .btn-mute {
   background: url("btns/volume-mute-regular.svg") no-repeat;
   background-size: contain;

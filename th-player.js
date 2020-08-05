@@ -82,12 +82,12 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   setProgressBar();
   //-----------------------Check for CC
   if (captions) {
-  talkingHeadsVideo.controls = "mouse";
+    talkingHeadsVideo.controls = "mouse";
     var url = "https://www.websitetalkingheads.com/ivideo/captions/" + title + ".vtt";
     var captions = CheckUrl(url);
-    if( captions ){
-        var track = '<track src="'+ url +'" label="English" kind="captions" srclang="en-us" default >';
-        th.prepend(track);
+    if (captions) {
+      var track = '<track src="' + url + '" label="English" kind="captions" srclang="en-us" default >';
+      th.prepend(track);
     }
     async function CheckUrl(url) {
       const response = await fetch(url, {
@@ -234,6 +234,9 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
           case "progress-bar":
             changeTime(event.offsetX);
             break;
+          case "btn-captions":
+            captionToggle();
+            break;
           case "btn-fullscreen":
             goFullScreen();
             break;
@@ -360,8 +363,22 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
     btns.mute.removeClass("btn-mute");
     btns.mute.addClass("btn-unmute");
   }
-  //Update controls on window resize
-  $(window).resize(function () {
-    setProgressBar();
-  });
+
+  function captionToggle() {
+    var curCaption = player.textTracks[0].mode;
+    if (curCaption === "showing") {
+      player.textTracks[0].mode = 'hidden';
+      btns.captions.removeClass("btn-captions");
+      btns.captions.addClass("btn-captions-off");
+    } else {
+      player.textTracks[0].mode = 'showing';
+      btns.captions.removeClass("btn-captions-off");
+      btns.captions.addClass("btn-captions");
+    }
+    console.log(curCaption);
+  }
+//Update controls on window resize
+$(window).resize(function () {
+  setProgressBar();
+});
 }

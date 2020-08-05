@@ -56,8 +56,7 @@ if ( empty( $captions ) ) {
     $captions = false;
 }
 if ( empty( $actor ) ) {
-    $actor = false;
-}
+    $actor = false;}
 if ( empty( $color ) ) {
     $color = false;
 }
