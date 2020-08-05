@@ -15,6 +15,7 @@ let talkingHeadsVideo = {
     playToggle: $('#btn-play-toggle'),
     stop: $('#btn-stop'),
     mute: $('#btn-mute'),
+    captions: $('#btn-captions'),
     fullscreen: $('#btn-fullscreen')
   },
   started: false
@@ -49,7 +50,7 @@ function setProgressBar() {
   progressBar.css("width", progressBarWidth);
 }
 
-function createTalkingHead(title, autostart, controls, actor) {
+function createTalkingHead(title, autostart, controls, captions, actor) {
   let path, videoPath, posterPath;
   //Create Player Object
   if (autostart === undefined) {
@@ -80,7 +81,8 @@ function createTalkingHead(title, autostart, controls, actor) {
   th.attr("src", talkingHeadsVideo.video);
   setProgressBar();
   //-----------------------Check for CC
-  if (!actor) {
+  if (captions) {
+  talkingHeadsVideo.controls = "mouse";
     var url = "https://www.websitetalkingheads.com/ivideo/captions/" + title + ".vtt";
     var captions = CheckUrl(url);
     if( captions ){

@@ -30,6 +30,7 @@
         <div class="progress" id="progress-bar" title="duration">
             <div id="progress" class="progress-bar progress-bar-striped" title="current time"></div>
         </div>
+        <div id="btn-captions" class="player-btn btn-captions" title="toggle captions" accesskey="C"></div>
         <div id="btn-fullscreen" class="player-btn btn-fullscreen-enter" title="toggle full screen" accesskey="T"></div>
     </div>
 </div>
@@ -42,6 +43,7 @@
 $video = $_GET[ "video" ];
 $autostart = $_GET[ "autostart" ];
 $controls = $_GET[ "controls" ];
+$captions= $_GET[ "captions" ];
 $actor = $_GET[ "actor" ];
 $color = $_GET[ "color" ];
 if ( empty( $autostart ) ) {
@@ -49,6 +51,9 @@ if ( empty( $autostart ) ) {
 }
 if ( empty( $controls ) ) {
     $controls = false;
+}
+if ( empty( $captions ) ) {
+    $captions = false;
 }
 if ( empty( $actor ) ) {
     $actor = false;
@@ -59,7 +64,7 @@ if ( empty( $color ) ) {
 ?>
 <script>
 		$( document ).ready( function () {
-			createTalkingHead( "<?=$video?>","<?=$autostart?>","<?=$controls?>","<?=$actor?>","<?=$color?>" );
+			createTalkingHead( "<?=$video?>","<?=$autostart?>","<?=$controls?>","<?=$captions?>","<?=$actor?>","<?=$color?>" );
 		} );
 	</script>
 </body>
