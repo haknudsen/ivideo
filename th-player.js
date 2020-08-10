@@ -359,6 +359,7 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   });
 
   function volumeChange() {
+    th.player.volume = th.volumeBar.val();
     sessionStorage.volume = volumeBar.val();
     btns.mute.removeClass("btn-mute");
     btns.mute.addClass("btn-unmute");
