@@ -116,6 +116,46 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       th.player[0].play();
 
     },
+    showTime: function () {
+      let cur = th.getTime(th.player[0].currentTime);
+      let dur = th.getTime(th.player[0].duration);
+      return cur + "/" + dur;
+    },
+    getTime: function (timenow) {
+      if (parseInt(timenow) / 60 >= 1) {
+        let h = Math.floor(timenow / 3600);
+        if (isNaN(h)) {
+          h = 0
+        }
+        timenow = timenow - h * 3600;
+        let m = Math.floor(timenow / 60);
+        if (isNaN(m)) {
+          m = 0
+        }
+        let s = Math.floor(timenow % 60);
+        if (isNaN(s)) {
+          s = 0
+        }
+        if (s.toString().length < 2) {
+          s = '0' + s;
+        }
+        return (m + ':' + s);
+      } else {
+        let m = Math.floor(timenow / 60);
+        if (isNaN(m)) {
+          m = 0
+        }
+        let s = Math.floor(timenow % 60);
+        if (isNaN(s)) {
+          s = 0
+        }
+        if (s.toString().length < 2) {
+          s = '0' + s;
+        }
+        return (m + ':' + s);
+      }
+
+    },
     btnFunctions: function () {
       th.holder.click(function () {
         console.log(event.target.id);
@@ -204,6 +244,14 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   switch (th.autostart) {
     case "no":
       th.player.attr("preload", "meta");
+      var i = setInterval(function () {
+        if (th.player[0].readyState > 0) {
+          console.log(th.player[0].readyState);
+          console.log(th.player[0].duration);
+         th.btns.time.text(th.showTime());
+          clearInterval(i);
+        }
+      }, 200);
       th.posterStart();
       break;
     case "yes":
@@ -222,6 +270,6 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   th.player[0].ontimeupdate = function () {
     let progressBar = (th.player[0].currentTime / th.player[0].duration * 100);
     th.btns.progress.css("width", progressBar + "%")
-    th.btns.time.text(showTime());
+    th.btns.time.text(th.showTime());
   };
-}[0]
+} [0]

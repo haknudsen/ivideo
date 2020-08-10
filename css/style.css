@@ -8359,6 +8359,7 @@ a.text-dark:hover, a.text-dark:focus {
   margin: auto 0;
   line-height: 1;
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: bold;
 }
 
 #bigPlayBtn, .bigPlayBtn {
@@ -8384,7 +8385,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 #bigPlayBtn:before, .bigPlayBtn:before {
   position: absolute;
-  content: url(http://www.live-spokesperson.com/images/BigPlayBtn.gif);
+  content: url(https://www.websitetalkingheads.com/ivideo/BigPlayBtn.gif);
   left: calc(50% - (128px/2));
   top: calc(50% - (64px/2));
 }
