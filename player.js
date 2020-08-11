@@ -156,6 +156,19 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       }
 
     },
+    captionToggle: function () {
+      th.curCaption = th.player[0].textTracks[0].mode;
+      if (th.curCaption === "showing") {
+        th.player[0].textTracks[0].mode = 'hidden';
+        th.btns.captions.removeClass("btn-captions");
+        th.btns.captions.addClass("btn-captions-off");
+      } else {
+        th.player[0].textTracks[0].mode = 'showing';
+        th.btns.captions.removeClass("btn-captions-off");
+        th.btns.captions.addClass("btn-captions");
+      }
+      console.log(th.curCaption);
+    },
     btnFunctions: function () {
       th.holder.click(function () {
         console.log(event.target.id);
@@ -224,6 +237,7 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   if (sessionStorage.volume) {
     th.volume = sessionStorage.volume;
     th.btns.volumeBar.val(th.volume);
+    th.player[0].volume = th.volume;
   }
   th.player.attr("poster", th.poster);
   th.player.attr("src", th.video);
@@ -246,9 +260,7 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       th.player.attr("preload", "meta");
       var i = setInterval(function () {
         if (th.player[0].readyState > 0) {
-          console.log(th.player[0].readyState);
-          console.log(th.player[0].duration);
-         th.btns.time.text(th.showTime());
+          th.btns.time.text(th.showTime());
           clearInterval(i);
         }
       }, 200);
@@ -263,6 +275,14 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
     default:
       launchMouse();
       break;
+  }
+  //-----------------------Check for CC
+  if (th.captions === true) {
+    th.controls = "mouse";
+    th.captions.url = "https://www.websitetalkingheads.com/ivideo/captions/" + title + ".vtt";
+    th.captions.track = '<track src="' + th.captions.url + '" label="English" kind="captions" srclang="en-us" default >';
+    th.player.prepend(th.captions.track);
+    console.log(th.captions);
   }
   console.log(th);
   th.setProgressBar();
