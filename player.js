@@ -186,6 +186,7 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
           th.showPause();
           th.btns.bigPlayBtn.hide("slow");
         }).catch(error => {
+          th.autostart = "mute";
           th.playMuted();
         });
         th.btnFunctions();
@@ -308,12 +309,19 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       th.holder.addClass("mouse-controls");
       break;
   }
-  console.log(th);
   th.setProgressBar();
+  //video ended function
+  th.player[0].onended = function () {
+    console.log("ended");
+    if (th.autostart != "mute") {
+      th.stopPlayer();
+    }
+  }
   // Update the seek bar as the player plays
   th.player[0].ontimeupdate = function () {
     let progressBar = (th.player[0].currentTime / th.player[0].duration * 100);
     th.btns.progress.css("width", progressBar + "%")
     th.btns.time.text(th.showTime());
   };
-} [0]
+
+}
