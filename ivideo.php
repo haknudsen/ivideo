@@ -6,7 +6,7 @@
 <meta name="description" content="Some examples of our videos. Talking Heads® can create a Whiteboard Video, Animation, Explainer Video, Video Presentation, or Website Spokesperson Video for you.  Contact us for more information.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="WebsiteTalkingHeads.com">
-<title>iVideo Examples</title>
+<title>iVideo Player</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php include("../includes/css-b4.php"); ?>
 </head>
@@ -17,7 +17,7 @@
     <div class="container">
       <div id="video">
         <div class="embed-responsive embed-responsive-16by9">
-          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=Motion Design&autostart=no&controls=true&captions=true"></iframe>
+          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=Motion Design&autostart=yes&controls=true&captions=true"></iframe>
         </div>
       </div>
     </div>
