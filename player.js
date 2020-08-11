@@ -50,7 +50,7 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       th.btns.progressBarWidth = ($("#controls").outerWidth() - th.btns.width) + "px";
       $("#progress-bar").outerWidth(th.btns.progressBarWidth);
     },
-    posterStart: function () {
+      preLoad: function(){
       th.player.attr("preload", "meta");
       var i = setInterval(function () {
         if (th.player[0].readyState > 0) {
@@ -58,6 +58,9 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
           clearInterval(i);
         }
       }, 200);
+      },
+    posterStart: function () {
+      th.preLoad();
       th.holder.click(function () {
         th.started = true;
         th.holder.unbind();
@@ -89,10 +92,13 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       }
     },
     stopPlayer: function () {
+      th.preLoad();
       th.player[0].pause();
       th.player[0].currentTime = 0;
       th.player[0].autoplay = false;
       th.player[0].loop = false;
+      th.autostart = "no";
+      th.btns.progress.css("width", "0%");
       th.showPlay();
       th.player[0].load();
 
