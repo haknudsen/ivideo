@@ -27,6 +27,10 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       width: 0,
       time: $("#time")
     },
+    captions: {
+      track: '<track src="https://www.websitetalkingheads.com/ivideo/captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >',
+        use: captions
+    },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {
         th.btns.volumeBar.css("display", "none");
@@ -220,11 +224,6 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   } else {
     th.controls = controls;
   }
-  if (captions === undefined || captions === "") {
-    th.captions = false;
-  } else {
-    th.captions = captions;
-  }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
     th.video = th.path + title + ".mp4";
@@ -277,12 +276,9 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       break;
   }
   //-----------------------Check for CC
-  if (th.captions === true) {
+  if (th.captions.use === "true") {
     th.controls = "mouse";
-    th.captions.url = "https://www.websitetalkingheads.com/ivideo/captions/" + title + ".vtt";
-    th.captions.track = '<track src="' + th.captions.url + '" label="English" kind="captions" srclang="en-us" default >';
     th.player.prepend(th.captions.track);
-    console.log(th.captions);
   }
   console.log(th);
   th.setProgressBar();
