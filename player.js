@@ -240,19 +240,6 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   }
   th.player.attr("poster", th.poster);
   th.player.attr("src", th.video);
-  //-------------------------------Set Controls
-  switch (th.controls) {
-    case "true":
-      $("#controls").addClass("visible");
-      $("#controls").css("opacity", 1);
-      break;
-    case "false":
-      $("#controls").addClass("invisible");
-      break;
-    default:
-      th.holder.addClass("mouse-controls");
-      break;
-  }
   //--------------------------------Set autostart
   switch (th.autostart) {
     case "no":
@@ -279,6 +266,19 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   if (th.captions.use === "true") {
     th.controls = "mouse";
     th.player.prepend(th.captions.track);
+  }
+  //-------------------------------Set Controls
+  switch (th.controls) {
+    case "true":
+      $("#controls").addClass("visible");
+      $("#controls").css("opacity", 1);
+      break;
+    case "false":
+      $("#controls").addClass("invisible");
+      break;
+    default:
+      th.holder.addClass("mouse-controls");
+      break;
   }
   console.log(th);
   th.setProgressBar();
