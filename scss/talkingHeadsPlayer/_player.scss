@@ -41,7 +41,7 @@ $bigPlayBtn-width: 160px;
       }
 	}
 	#progress-bar {
-		margin: 2px 6px;
+		margin: 2px;
 		height: $btnWidth;
         box-shadow: 1px 1px 1px $dark, 0px 0px 1px $primary;
         border-radius: 1.3px;
@@ -63,6 +63,10 @@ $bigPlayBtn-width: 160px;
 		font-family: $font-family-monospace;
         font-weight: bold;
 	}
+    #btn-fullscreen{
+        margin-left: 2px;
+        margin-right: -4px;
+    }
 }
 #bigPlayBtn, .bigPlayBtn {
 	height: $bigPlayBtn-height;

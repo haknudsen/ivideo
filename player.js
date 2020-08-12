@@ -29,7 +29,13 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
     },
     captions: {
       track: '<track src="https://www.websitetalkingheads.com/ivideo/captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >',
-      use: captions
+      use: function(){
+          if(captions === "true"){
+              return true;
+          }else{
+              return false;
+          }
+      }
     },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {
@@ -266,6 +272,11 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   } else {
     th.controls = controls;
   }
+    console.log( th.captions.use() );
+    if(th.captions.use() !== true){
+        th.btns.captions.css({"width":"0",
+                            "margin":"0"});
+    }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
     th.video = th.path + title + ".mp4";
