@@ -29,7 +29,7 @@ $bigPlayBtn-width: 160px;
 	border: $dark thin solid;
 	border-radius: 2px;
 	color: $light;
-	transition: opacity 0.5s;
+	transition: opacity 0.2s;
 	opacity: 0;
 	.player-btn {
 		width: $btnWidth;
@@ -52,6 +52,9 @@ $bigPlayBtn-width: 160px;
 	}
     .progress{
         background-color: $secondary;
+    }
+    .progress-bar{
+        transition:width 0.2s ease; 
     }
 	#volume-bar {
 		margin: 2px 4px;

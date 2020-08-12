@@ -29,12 +29,12 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
     },
     captions: {
       track: '<track src="https://www.websitetalkingheads.com/ivideo/captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >',
-      use: function(){
-          if(captions === "true"){
-              return true;
-          }else{
-              return false;
-          }
+      use: function () {
+        if (captions === "true") {
+          return true;
+        } else {
+          return false;
+        }
       }
     },
     setProgressBar: function () {
@@ -56,7 +56,7 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       th.btns.progressBarWidth = ($("#controls").outerWidth() - th.btns.width) + "px";
       $("#progress-bar").outerWidth(th.btns.progressBarWidth);
     },
-      preLoad: function(){
+    preLoad: function () {
       th.player.attr("preload", "meta");
       var i = setInterval(function () {
         if (th.player[0].readyState > 0) {
@@ -64,7 +64,7 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
           clearInterval(i);
         }
       }, 200);
-      },
+    },
     posterStart: function () {
       th.preLoad();
       th.holder.click(function () {
@@ -74,6 +74,9 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
         th.player[0].play();
         th.showPause();
         th.btnFunctions();
+        if (event.target.id === "btn-fullscreen") {
+          th.goFullScreen();
+        }
       });
     },
     showPause: function () {
@@ -191,6 +194,9 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
         th.btns.captions.addClass("btn-captions");
       }
     },
+    goFullScreen: function () {
+      th.player[0].requestFullscreen();
+    },
     tryAutostart: function () {
       let promise = th.player[0].play();
       if (promise !== undefined) {
@@ -212,18 +218,22 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       th.btns.bigPlayBtn.show("slow");
       th.player[0].play();
       th.holder.click(function () {
-        th.started = true;
         th.holder.unbind();
-        th.player[0].currentTime = 0;
+        th.stopPlayer()
+        th.started = true;
+        th.autostart = "yes";
         th.player[0].muted = false;
         th.player[0].play();
         th.showPause();
         th.btnFunctions();
+        if (event.target.id === "btn-fullscreen") {
+          th.goFullScreen();
+        }
       });
     },
     btnFunctions: function () {
       th.holder.click(function () {
-        console.log(event.target.id);
+        //        console.log(event.target.id);
         switch (event.target.id) {
           case "btn-restart":
             th.player.currentTime = 0;
@@ -272,11 +282,12 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   } else {
     th.controls = controls;
   }
-    console.log( th.captions.use() );
-    if(th.captions.use() !== true){
-        th.btns.captions.css({"width":"0",
-                            "margin":"0"});
-    }
+  if (th.captions.use() !== true) {
+    th.btns.captions.css({
+      "width": "0",
+      "margin": "0"
+    });
+  }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
     th.video = th.path + title + ".mp4";
@@ -336,8 +347,8 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
   }
   // Update the seek bar as the player plays
   th.player[0].ontimeupdate = function () {
-    let progressBar = (th.player[0].currentTime / th.player[0].duration * 100);
-    th.btns.progress.css("width", progressBar + "%")
+    let progressBarLength = (th.player[0].currentTime / th.player[0].duration * 100);
+    th.btns.progress.css("width", progressBarLength + "%")
     th.btns.time.text(th.showTime());
   };
 

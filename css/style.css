@@ -8326,7 +8326,7 @@ a.text-dark:hover, a.text-dark:focus {
   border: #005180 thin solid;
   border-radius: 2px;
   color: #C4EAFF;
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
   opacity: 0;
 }
 #controls .player-btn {
@@ -8352,6 +8352,9 @@ a.text-dark:hover, a.text-dark:focus {
 }
 #controls .progress {
   background-color: #4DBEFF;
+}
+#controls .progress-bar {
+  transition: width 0.2s ease;
 }
 #controls #volume-bar {
   margin: 2px 4px;
