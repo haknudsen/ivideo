@@ -25,3 +25,10 @@ $player-btns: (
         cursor: pointer;
 	}
 }
+@each $name, $img in $player-btns {
+	.btn-white-#{$name}{
+        background: url("btns/#{$img}-white.svg") no-repeat;
+        background-size: contain;
+        cursor: pointer;
+	}
+}

@@ -4,7 +4,7 @@
 //  autostart- no, yes, mouse, mute
 
 
-function createTalkingHead(title, autostart, controls, captions, actor) {
+function createTalkingHead(title, autostart, controls, captions, color, actor) {
   var th = {
     holder: $("#player-holder"),
     player: $("#talking-head-player"),
@@ -36,6 +36,21 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
           return false;
         }
       }
+    },
+    color: color,
+    setColor: function () {
+//      process.css("background-color", "#" + color);
+      $("#controls").css("background-color", th.convertHex(color, 80));
+      $(".progress-bar").css("background-color", "#" + color);
+      $("#bigPlayBtn").css("background-color", th.convertHex(color, 70));
+      $("#bigPlayBtn").css("border-color", th.convertHex(color, 90));
+    },
+    convertHex: function (hex, opacity) {
+      hex = hex.replace('#', '');
+      var r = parseInt(hex.substring(0, 2), 16);
+      var g = parseInt(hex.substring(2, 4), 16);
+      var b = parseInt(hex.substring(4, 6), 16);
+      return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
     },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {
@@ -287,6 +302,9 @@ function createTalkingHead(title, autostart, controls, captions, actor) {
       "width": "0",
       "margin": "0"
     });
+  }
+  if (th.color.length > 0) {
+    th.setColor();
   }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";

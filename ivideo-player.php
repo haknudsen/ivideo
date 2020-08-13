@@ -64,7 +64,7 @@ if ( empty( $color ) ) {
 ?>
 <script>
 		$( document ).ready( function () {
-			createTalkingHead( "<?=$video?>","<?=$autostart?>","<?=$controls?>","<?=$captions?>","<?=$actor?>","<?=$color?>" );
+			createTalkingHead( "<?=$video?>","<?=$autostart?>","<?=$controls?>","<?=$captions?>","<?=$color?>","<?=$actor?>" );
 		} );
 	</script>
 </body>
