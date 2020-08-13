@@ -39,11 +39,23 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     },
     color: color,
     setColor: function () {
-//      process.css("background-color", "#" + color);
+      //      process.css("background-color", "#" + color);
       $("#controls").css("background-color", th.convertHex(color, 80));
       $(".progress-bar").css("background-color", "#" + color);
       $("#bigPlayBtn").css("background-color", th.convertHex(color, 70));
       $("#bigPlayBtn").css("border-color", th.convertHex(color, 90));
+      $("#btn-restart").removeClass("btn-restart").addClass("btn-white-restart");
+      $("#btn-play-toggle").removeClass("btn-play").addClass("btn-white-play");
+      $("#btn-stop").removeClass("btn-stop").addClass("btn-white-stop");
+      $("#btn-mute").removeClass("btn-mute").addClass("btn-white-mute");
+      $("#btn-captions").removeClass("btn-captions").addClass("btn-white-captions");
+      $("#btn-fullscreen").removeClass("btn-fullscreen-enter").addClass("btn-white-fullscreen-enter");
+      $("#controls.player-btn").css("filter", "#" + color);
+      $("#time").css({"text-shadow": "1px 1px #" + color,
+                     "color":"white"});
+        $(".progress").css("background-color", "white");
+        $("input[type=range]").addClass("slideThumb");
+
     },
     convertHex: function (hex, opacity) {
       hex = hex.replace('#', '');
@@ -91,6 +103,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btnFunctions();
         if (event.target.id === "btn-fullscreen") {
           th.goFullScreen();
+        }
+        if (event.target.id === "volume-bar") {
+          th.volumeChange();
         }
       });
     },
@@ -233,6 +248,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.btns.bigPlayBtn.show("slow");
       th.player[0].play();
       th.holder.click(function () {
+          console.log( event.target.id );
         th.holder.unbind();
         th.stopPlayer()
         th.started = true;
@@ -243,6 +259,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btnFunctions();
         if (event.target.id === "btn-fullscreen") {
           th.goFullScreen();
+        }
+        if (event.target.id === "volume-bar") {
+          th.volumeChange();
+            th.muteToggle();
         }
       });
     },

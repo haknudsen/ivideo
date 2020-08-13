@@ -86,3 +86,11 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: $secondary;
 }
+.slideThumb::-webkit-slider-runnable-track{background:white}
+.slideThumb:focus::-webkit-slider-runnable-track{background:white}
+.slideThumb::-webkit-slider-thumb{background:white}
+.slideThumb::-ms-thumb{background:white}
+.slideThumb::-moz-range-thumb{background:white}
+.slideThumb::-moz-range-track{background:white}
+.slideThumb::-ms-fill-lower{background:white}
+.slideThumb::-ms-fill-upper{background:white}

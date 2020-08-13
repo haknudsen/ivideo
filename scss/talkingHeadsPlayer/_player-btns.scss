@@ -21,13 +21,15 @@ $player-btns: (
 @each $name, $img in $player-btns {
 	.btn-#{$name}{
         background: url("btns/#{$img}-regular.svg") no-repeat;
+        background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
 	}
 }
 @each $name, $img in $player-btns {
 	.btn-white-#{$name}{
-        background: url("btns/#{$img}-white.svg") no-repeat;
+        background: url("btns/#{$img}-white.svg");
+        background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
 	}
