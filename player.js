@@ -51,10 +51,12 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       $("#btn-captions").removeClass("btn-captions").addClass("btn-white-captions");
       $("#btn-fullscreen").removeClass("btn-fullscreen-enter").addClass("btn-white-fullscreen-enter");
       $("#controls.player-btn").css("filter", "#" + color);
-      $("#time").css({"text-shadow": "1px 1px #" + color,
-                     "color":"white"});
-        $(".progress").css("background-color", "white");
-        $("input[type=range]").addClass("slideThumb");
+      $("#time").css({
+        "text-shadow": "1px 1px #" + color,
+        "color": "white"
+      });
+      $(".progress").css("background-color", "white");
+      $("input[type=range]").addClass("slideThumb");
 
     },
     convertHex: function (hex, opacity) {
@@ -110,13 +112,23 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       });
     },
     showPause: function () {
-      th.btns.playToggle.addClass("btn-pause");
-      th.btns.playToggle.removeClass("btn-play");
+      if (th.color === false) {
+        th.btns.playToggle.addClass("btn-pause");
+        th.btns.playToggle.removeClass("btn-play");
+      } else {
+        th.btns.playToggle.addClass("btn-white-pause");
+        th.btns.playToggle.removeClass("btn-white-play");
+      }
       th.btns.bigPlayBtn.hide("slow");
     },
     showPlay: function () {
-      th.btns.playToggle.removeClass("btn-pause");
-      th.btns.playToggle.addClass("btn-play");
+      if (th.color === false) {
+        th.btns.playToggle.removeClass("btn-pause");
+        th.btns.playToggle.addClass("btn-play");
+      } else {
+        th.btns.playToggle.removeClass("btn-white-pause");
+        th.btns.playToggle.addClass("btn-white-play");
+      }
       th.btns.bigPlayBtn.show("slow");
     },
     playToggle: function () {
@@ -154,12 +166,23 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     muteToggle: function () {
       if (th.player[0].muted === true) {
         th.player[0].muted = false;
-        th.btns.mute.addClass("btn-unmute");
-        th.btns.mute.removeClass("btn-mute");
+        if (th.color === false) {
+          th.btns.mute.addClass("btn-unmute");
+          th.btns.mute.removeClass("btn-mute");
+        } else {
+          th.btns.mute.addClass("btn-white-unmute");
+          th.btns.mute.removeClass("btn-white-mute");
+        }
       } else {
         th.player[0].muted = true;
-        th.btns.mute.addClass("btn-mute");
-        th.btns.mute.removeClass("btn-unmute");
+
+        if (th.color === false) {
+          th.btns.mute.addClass("btn-mute");
+          th.btns.mute.removeClass("btn-unmute");
+        } else {
+          th.btns.mute.addClass("btn-white-mute");
+          th.btns.mute.removeClass("btn-white-unmute");
+        }
       }
 
     },
@@ -248,7 +271,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.btns.bigPlayBtn.show("slow");
       th.player[0].play();
       th.holder.click(function () {
-          console.log( event.target.id );
+        console.log(event.target.id);
         th.holder.unbind();
         th.stopPlayer()
         th.started = true;
@@ -261,8 +284,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.goFullScreen();
         }
         if (event.target.id === "volume-bar") {
+          console.log("volume");
           th.volumeChange();
-            th.muteToggle();
+          th.muteToggle();
         }
       });
     },
@@ -323,8 +347,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       "margin": "0"
     });
   }
-  if (th.color.length > 0) {
+  if (th.color.length === 6) {
     th.setColor();
+  } else {
+    th.color = false;
   }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
