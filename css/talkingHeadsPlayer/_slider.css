@@ -1,43 +1,24 @@
 /*
-Error: Undefined variable: "$dark".
-        on line 16 of D:/Websites/iVideo/scss/talkingHeadsPlayer/_slider.scss
+Error: Undefined variable: "$primary".
+        on line 7 of D:/Websites/iVideo/scss/talkingHeadsPlayer/_slider.scss
 
-11: }
-12: input[type=range]::-webkit-slider-runnable-track {
-13:   width: 100%;
-14:   height:.5rem;
-15:   cursor: pointer;
-16:   box-shadow: 1px 1px 1px $dark, 0px 0px 1px $primary;
-17:   background: $primary;
-18:   border-radius: 1.3px;
-19:   border: 0.2px solid $light;
-20: }
-21: input[type=range]:focus::-webkit-slider-runnable-track {
+2: // Github: https://github.com/darlanrod/input-range-sass
+3: // Author: Darlan Rod https://github.com/darlanrod
+4: // Version 1.5.2
+5: // MIT License
+6: 
+7: $track-color: $primary !default;
+8: $thumb-color: $secondary !default;
+9: 
+10: $thumb-radius: 12px !default;
+11: $thumb-height: 24px !default;
+12: $thumb-width: 24px !default;
 
 Backtrace:
-D:/Websites/iVideo/scss/talkingHeadsPlayer/_slider.scss:16
+D:/Websites/iVideo/scss/talkingHeadsPlayer/_slider.scss:7
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `block in _perform'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `map'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `_perform'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `block in _perform'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `map'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/list_literal.rb:63:in `_perform'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `block (2 levels) in visit_rule'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `map'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `block in visit_rule'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:432:in `visit_rule'
+C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:472:in `visit_variable'
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.7.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
@@ -77,4 +58,4 @@ C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/bin/compass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$dark\".\A         on line 16 of D:/Websites/iVideo/scss/talkingHeadsPlayer/_slider.scss\A \A 11: }\A 12: input[type=range]::-webkit-slider-runnable-track {\A 13:   width: 100%;\A 14:   height:.5rem;\A 15:   cursor: pointer;\A 16:   box-shadow: 1px 1px 1px $dark, 0px 0px 1px $primary;\A 17:   background: $primary;\A 18:   border-radius: 1.3px;\A 19:   border: 0.2px solid $light;\A 20: }\A 21: input[type=range]:focus::-webkit-slider-runnable-track {"; }
+  content: "Error: Undefined variable: \"$primary\".\A         on line 7 of D:/Websites/iVideo/scss/talkingHeadsPlayer/_slider.scss\A \A 2: // Github: https://github.com/darlanrod/input-range-sass\A 3: // Author: Darlan Rod https://github.com/darlanrod\A 4: // Version 1.5.2\A 5: // MIT License\A 6: \A 7: $track-color: $primary !default;\A 8: $thumb-color: $secondary !default;\A 9: \A 10: $thumb-radius: 12px !default;\A 11: $thumb-height: 24px !default;\A 12: $thumb-width: 24px !default;"; }

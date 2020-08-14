@@ -56,7 +56,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       });
       $(".progress").css("background-color", "white");
       $("input[type=range]").addClass("slideThumb");
-
+      let c = "[type='range']::-webkit-slider-runnable-track{border:2px solid #" + color + "}[type='range']::-webkit-slider-thumb{background:#FFFFFF;border:2px solid #" + color + "}[type='range']::-moz-range-track{background:#" + color + ";border:2px solid #FFFFFF}[type='range']::-moz-range-thumb{background:#FFFFFF;border:2px solid #" + color + "}[type='range']::-ms-fill-lower{background:#006fe6;border:2px solid #FFFFFF}[type='range']::-ms-fill-upper{background:#" + color + ";border:2px solid #FFFFFF}[type='range']::-ms-thumb{background:#FFFFFF;border:2px solid #" + color + "}";
+      $("<style type='text/css'> " + c + " </style>").appendTo("head");
     },
     convertHex: function (hex, opacity) {
       hex = hex.replace('#', '');
