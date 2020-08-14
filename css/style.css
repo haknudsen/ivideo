@@ -8244,6 +8244,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-play:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-pause {
@@ -8251,6 +8256,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-pause:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-stop {
@@ -8258,6 +8268,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-stop:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-restart {
@@ -8265,6 +8280,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-restart:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-captions {
@@ -8272,6 +8292,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-captions:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-captions-off {
@@ -8279,6 +8304,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-captions-off:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-mute {
@@ -8286,6 +8316,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-mute:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-unmute {
@@ -8293,6 +8328,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-unmute:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-fullscreen-enter {
@@ -8300,6 +8340,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-fullscreen-enter:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-fullscreen-exit {
@@ -8307,6 +8352,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-fullscreen-exit:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
 }
 
 .btn-white-play {
@@ -8314,6 +8364,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-play:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-pause {
@@ -8321,6 +8376,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-pause:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-stop {
@@ -8328,6 +8388,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-stop:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-restart {
@@ -8335,6 +8400,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-restart:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-captions {
@@ -8342,6 +8412,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-captions:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-captions-off {
@@ -8349,6 +8424,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-captions-off:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-mute {
@@ -8356,6 +8436,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-mute:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-unmute {
@@ -8363,6 +8448,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-unmute:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-fullscreen-enter {
@@ -8370,6 +8460,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-fullscreen-enter:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 .btn-white-fullscreen-exit {
@@ -8377,6 +8472,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-fullscreen-exit:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
 }
 
 /* Scss Document */
@@ -8412,11 +8512,6 @@ a.text-dark:hover, a.text-dark:focus {
 #controls .player-btn {
   width: 2rem;
   margin: 4px 2px;
-  filter: drop-shadow(1px 1px #005180);
-}
-#controls .player-btn:hover {
-  opacity: .7;
-  filter: drop-shadow(0 0 #005180);
 }
 #controls #progress-bar {
   margin: 2px;

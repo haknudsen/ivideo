@@ -24,6 +24,11 @@ $player-btns: (
         background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
+        filter: drop-shadow(1px 1px $dark); 
+      &:hover {
+          opacity: .7;
+        filter: drop-shadow(0 1px $dark);
+      }
 	}
 }
 @each $name, $img in $player-btns {
@@ -32,5 +37,10 @@ $player-btns: (
         background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
+        filter: drop-shadow(1px 1px $black);
+      &:hover {
+          opacity: .7;
+        filter: drop-shadow(0 1px $black);
+      }
 	}
 }

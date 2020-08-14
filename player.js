@@ -47,10 +47,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       $("#btn-restart").removeClass("btn-restart").addClass("btn-white-restart");
       $("#btn-play-toggle").removeClass("btn-play").addClass("btn-white-play");
       $("#btn-stop").removeClass("btn-stop").addClass("btn-white-stop");
-      $("#btn-mute").removeClass("btn-mute").addClass("btn-white-mute");
+      $("#btn-mute").removeClass("btn-unmute").addClass("btn-white-unmute");
       $("#btn-captions").removeClass("btn-captions").addClass("btn-white-captions");
       $("#btn-fullscreen").removeClass("btn-fullscreen-enter").addClass("btn-white-fullscreen-enter");
-      $("#controls.player-btn").css("filter", "#" + color);
       $("#time").css({
         "text-shadow": "1px 1px #" + color,
         "color": "white"
@@ -175,7 +174,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         }
       } else {
         th.player[0].muted = true;
-
         if (th.color === false) {
           th.btns.mute.addClass("btn-mute");
           th.btns.mute.removeClass("btn-unmute");

@@ -33,12 +33,7 @@ $bigPlayBtn-width: 160px;
 	opacity: 0;
 	.player-btn {
 		width: $btnWidth;
-		margin: 4px 2px;
-        filter: drop-shadow(1px 1px $dark);   
-      &:hover {
-          opacity: .7;
-        filter: drop-shadow(0 0 $dark); 
-      }
+		margin: 4px 2px;  
 	}
 	#progress-bar {
 		margin: 2px;
