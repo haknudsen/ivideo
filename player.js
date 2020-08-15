@@ -40,7 +40,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     color: color,
     setColor: function () {
       //      process.css("background-color", "#" + color);
-      $("#controls").css("background-color", th.convertHex(color, 80));
+      $("#controls").css({"background-color": th.convertHex(color, 80),
+                         "border-color": "#" + color});
       $(".progress-bar").css("background-color", "#" + color);
       $("#bigPlayBtn").css("background-color", th.convertHex(color, 70));
       $("#bigPlayBtn").css("border-color", th.convertHex(color, 90));
@@ -65,6 +66,11 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       var g = parseInt(hex.substring(2, 4), 16);
       var b = parseInt(hex.substring(4, 6), 16);
       return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
+    },
+    setHeight: function () {
+      let w = th.holder.width();
+      let h = (w / 16) * 9;
+      th.holder.height(h);
     },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {
@@ -400,10 +406,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.holder.addClass("mouse-controls");
       break;
   }
+  th.setHeight();
   th.setProgressBar();
   //video ended function
   th.player[0].onended = function () {
-    console.log("ended");
     if (th.autostart != "mute") {
       th.stopPlayer();
     }
@@ -414,5 +420,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.btns.progress.css("width", progressBarLength + "%")
     th.btns.time.text(th.showTime());
   };
-
+  $(window).resize(function () {
+    th.setProgressBar();
+    th.setHeight();
+  });
 }
