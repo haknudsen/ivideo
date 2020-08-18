@@ -129,7 +129,7 @@ if ( $result->num_rows > 0 ) {
       $id = '';
     }
     echo '
-    <div class="col-sm-' . $col . '" data="' . $x . '"><img class="img-fluid video" src="https://www.websitetalkingheads.com/ivideo/videos/640/' . $name . '.jpg" alt="' . $keyword[ $altNum ] . '" data-video="' . $name . '" ' . $id . '></div>
+    <div class="col-sm-' . $col . '" data="' . $x . '"><img class="img-fluid video" src="https://www.websitetalkingheads.com/ivideo/videos/640/' . $name . '.jpg" alt="' . $keyword[ $altNum ] . '" title="' . $name . '" ' . $id . '></div>
   ';
     if ( $x < $perRow ) {
     $x++;
