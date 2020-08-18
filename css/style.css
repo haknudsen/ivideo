@@ -8635,6 +8635,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .carousel-indicators li {
   background-color: #007bff;
+  cursor: pointer;
 }
 
 .carousel-indicators .active {
@@ -8645,8 +8646,9 @@ a.text-dark:hover, a.text-dark:focus {
   fill: #007bff;
 }
 
-svg {
-  fill: #007bff;
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  color: #005180;
+  opacity: 0.5;
 }
 
 /* Scss Document */
@@ -8719,7 +8721,7 @@ svg {
 #bigPlayBtn, .bigPlayBtn {
   height: 76px;
   width: 160px;
-  display: block;
+  display: relative;
   position: absolute;
   padding: 0;
   cursor: pointer;

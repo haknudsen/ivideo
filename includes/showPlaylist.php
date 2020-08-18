@@ -16,7 +16,7 @@ if ( !$show ) {
   $show = 10;
 }
 if ( !$perRow ) {
-  $perRow = 4;
+  $perRow = 3;
 }
 switch ( $perRow ) {
   case 3:

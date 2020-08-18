@@ -69,7 +69,7 @@ $bigPlayBtn-width: 160px;
 #bigPlayBtn, .bigPlayBtn {
 	height: $bigPlayBtn-height;
 	width: $bigPlayBtn-width;
-	display: block;
+	display: relative;
 	position: absolute;
 	padding: 0;
 	cursor: pointer;

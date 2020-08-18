@@ -43,7 +43,8 @@
   margin-bottom: 0
 }
 .carousel-indicators li {
-  background-color: $primary
+  background-color: $primary;
+    cursor: pointer;
 }
 .carousel-indicators .active {
   background-color: $dark;
@@ -51,6 +52,7 @@
 .carousel-control{
     fill:$primary;
 }
-svg{
-    fill:$primary;
+.carousel-control-prev:hover,.carousel-control-next:hover{
+    color: $dark;
+    opacity: 0.5;
 }
