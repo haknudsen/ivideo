@@ -33,6 +33,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         let w = th.holder.width();
         let h = (w / 16) * 3;
         $("#playlist").height(h);
+          $("#bigPlayBtn").css("top",(w/16)*4);
       }
     },
     captions: {
@@ -81,7 +82,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       let w = th.holder.width();
       let h = (w / 16) * 9;
       th.holder.height(h);
-        th.container.controls.css("top",h-42);
+      th.container.controls.css("top", h - 42);
     },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {
@@ -169,7 +170,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.btns.progress.css("width", "0%");
       th.showPlay();
       th.player[0].load();
-
     },
     volumeChange: function () {
       th.volume = th.btns.volumeBar.val();
@@ -439,5 +439,13 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   $(window).resize(function () {
     th.setProgressBar();
     th.setHeight();
+  });
+  $(".video").click(function () {
+    th.poster = th.path + $(this).attr("data-video") + ".jpg";
+    th.video = th.path + $(this).attr("data-video") + ".mp4";
+    th.player.attr("poster", th.poster);
+    th.player.attr("src", th.video);
+    th.stopPlayer();
+    th.playToggle();
   });
 }

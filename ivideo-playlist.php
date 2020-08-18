@@ -12,7 +12,7 @@
 </head>
 <!--<body oncontextmenu="return false;">-->
 <body>
-  <section class="playlist">
+  <section id="playlist-player">
     <div id="player-holder">
       <video id="talking-head-player" preload playsinline width="100%">
         <p>Your browser does not support the video tag. Please Visit <a href="https://www.websitetalkingheads.com/support/" title="Please Visit Support"> https://www.websitetalkingheads.com/support/ </a> </p>
