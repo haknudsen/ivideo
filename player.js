@@ -27,6 +27,14 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       width: 0,
       time: $("#time")
     },
+    title: title,
+    playlist: {
+      setHeight: function () {
+        let w = th.holder.width();
+        let h = (w / 16) * 3;
+        $("#playlist").height(h);
+      }
+    },
     captions: {
       track: '<track src="https://www.websitetalkingheads.com/ivideo/captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >',
       use: function () {
@@ -40,8 +48,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     color: color,
     setColor: function () {
       //      process.css("background-color", "#" + color);
-      $("#controls").css({"background-color": th.convertHex(color, 80),
-                         "border-color": "#" + color});
+      $("#controls").css({
+        "background-color": th.convertHex(color, 80),
+        "border-color": "#" + color
+      });
       $(".progress-bar").css("background-color", "#" + color);
       $("#bigPlayBtn").css("background-color", th.convertHex(color, 70));
       $("#bigPlayBtn").css("border-color", th.convertHex(color, 90));
@@ -356,6 +366,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.setColor();
   } else {
     th.color = false;
+  }
+  if (th.title === "playlist") {
+    console.log(th.title);
+      th.playlist.setHeight();
   }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";

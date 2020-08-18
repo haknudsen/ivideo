@@ -16,8 +16,8 @@
   <section class="jumbotron">
     <div class="container">
       <div id="video">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=Motion Design&autostart=no&controls=true&captions=false&color=FF7D00"></iframe>
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-playlist.php?video=playlist&autostart=no&controls=true&captions=false&color=FF7D00&type=typography"></iframe>
         </div>
       </div>
     </div>
