@@ -23,7 +23,7 @@ $bigPlayBtn-width: 160px;
 	display: flex;
 	flex-wrap: wrap;
 	position: absolute;
-	bottom: 0;
+	bottom: auto;
 	top: auto;
 	background: rgba($primary, 0.9);
 	border: $dark thin solid;

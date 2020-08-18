@@ -369,7 +369,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   }
   if (th.title === "playlist") {
     console.log(th.title);
-      th.playlist.setHeight();
+    th.playlist.setHeight();
   }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
