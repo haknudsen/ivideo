@@ -17,9 +17,9 @@
 <body>
   <?php include ('../includes/header19.php'); ?>
   <section class="jumbotron">
-    <div class="video">
+    <div class="container container-video">
       <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=playlist&autostart=no&controls=mouse&captions=false&color=FF7D00&type=Typography"></iframe>
+        <iframe class="embed-responsive-item" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=interactive&autostart=no&controls=mouse&captions=false&color=false&type=Typography"></iframe>
       </div>
     </div>
   </section>

@@ -8721,7 +8721,6 @@ a.text-dark:hover, a.text-dark:focus {
 #bigPlayBtn, .bigPlayBtn {
   height: 76px;
   width: 160px;
-  display: relative;
   position: absolute;
   padding: 0;
   cursor: pointer;
