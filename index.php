@@ -16,6 +16,13 @@
 
 <body>
   <?php include ('../includes/header19.php'); ?>
+  <section class="jumbotron">
+    <div class="video">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=playlist&autostart=no&controls=mouse&captions=false&color=FF7D00&type=Typography"></iframe>
+      </div>
+    </div>
+  </section>
   <section class="container-fluid">
     <h1>The Talking Heads<sup>®</sup> Mission</h1>
     <div class="mission">Talking Heads<sup>®</sup> is an online company that focuses on providing individuals and businesses with custom videos that would best present their interests and brand.</div>
