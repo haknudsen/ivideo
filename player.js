@@ -406,7 +406,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     title = th.playlist.getPlaylist()[th.playlist.currentVideo];
   }
   if (th.title === "interactive") {
-    let chapters = th.interactive.getChapter();
     title = th.interactive.data[th.interactive.chapter].video;
     th.path = "videos/";
     th.video = th.path + title + ".mp4";
