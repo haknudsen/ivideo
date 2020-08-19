@@ -466,8 +466,13 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.setHeight();
   });
   $(".video").click(function () {
-    th.poster = th.path + $(this).attr("data-video") + ".jpg";
-    th.video = th.path + $(this).attr("data-video") + ".mp4";
+    th.poster = th.path + this.title + ".jpg";
+    th.video = th.path + this.title + ".mp4";
+    if (!th.started) {
+      th.holder.unbind();
+      th.started = true;
+        th.btnFunctions();
+    }
     th.playlist.newVideo();
   });
 }
