@@ -1,5 +1,5 @@
 // JavaScript Document
-// Talking Heads Player version 0.9.1
+// Talking Heads Player version 1.0.1
 ////controls- true,false, mouse
 //  autostart- no, yes, mouse, mute
 
@@ -72,6 +72,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       $(".progress-bar").css("background-color", "#" + color);
       $("#bigPlayBtn").css("background-color", th.convertHex(color, 70));
       $("#bigPlayBtn").css("border-color", th.convertHex(color, 90));
+      $(".carousel-control-prev").css("color", "#" + color);
+      $(".carousel-control-next").css("color", "#" + color);
+      $("#playlist-player").css("background-color", "#" + color);
       $("#btn-restart").removeClass("btn-restart").addClass("btn-white-restart");
       $("#btn-play-toggle").removeClass("btn-play").addClass("btn-white-play");
       $("#btn-stop").removeClass("btn-stop").addClass("btn-white-stop");

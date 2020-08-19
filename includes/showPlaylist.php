@@ -118,7 +118,7 @@ if ( $result->num_rows > 0 ) {
       $shortName = $name;
     }
     if ( $x === 1 ) {
-      echo '<div class="carousel-item py-2">
+      echo '<div class="carousel-item">
 						<div class="row">
     ';
     }
