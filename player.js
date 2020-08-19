@@ -1,5 +1,5 @@
 // JavaScript Document
-// Talking Heads Player version 0.9.1
+// Talking Heads Player version 1.0.1
 ////controls- true,false, mouse
 //  autostart- no, yes, mouse, mute
 
@@ -52,6 +52,23 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         return playlistList;
       }
     },
+    interactive: {
+      chapter: 0,
+      getChapter: function () {
+        let json = (function () {
+          $.ajax({
+            'async': false,
+            'global': false,
+            'url': "chapters/interactive.json",
+            'dataType': "json",
+            'success': function (data) {
+              json = data;
+            }
+          });
+          return json;
+        })();
+      }
+    },
     captions: {
       track: '<track src="https://www.websitetalkingheads.com/ivideo/captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >',
       use: function () {
@@ -72,6 +89,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       $(".progress-bar").css("background-color", "#" + color);
       $("#bigPlayBtn").css("background-color", th.convertHex(color, 70));
       $("#bigPlayBtn").css("border-color", th.convertHex(color, 90));
+      $(".carousel-control-prev").css("color", "#" + color);
+      $(".carousel-control-next").css("color", "#" + color);
+      $("#playlist-player").css("background-color", "#" + color);
       $("#btn-restart").removeClass("btn-restart").addClass("btn-white-restart");
       $("#btn-play-toggle").removeClass("btn-play").addClass("btn-white-play");
       $("#btn-stop").removeClass("btn-stop").addClass("btn-white-stop");
@@ -203,6 +223,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.btns.mute.addClass("btn-unmute");
           th.btns.mute.removeClass("btn-mute");
         } else {
+
           th.btns.mute.addClass("btn-white-unmute");
           th.btns.mute.removeClass("btn-white-mute");
         }
@@ -387,6 +408,11 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.playlist.setHeight();
     title = th.playlist.getPlaylist()[th.playlist.currentVideo];
   }
+    console.log("title= " + th.title  );
+  if (th.title === "interactive") {
+    let info = th.interactive.getChapter();
+   console.log( info, th.interactive.chapter );
+  }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
     th.video = th.path + title + ".mp4";
@@ -463,8 +489,13 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.setHeight();
   });
   $(".video").click(function () {
-    th.poster = th.path + $(this).attr("data-video") + ".jpg";
-    th.video = th.path + $(this).attr("data-video") + ".mp4";
+    th.poster = th.path + this.title + ".jpg";
+    th.video = th.path + this.title + ".mp4";
+    if (!th.started) {
+      th.holder.unbind();
+      th.started = true;
+      th.btnFunctions();
+    }
     th.playlist.newVideo();
   });
 }
