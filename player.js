@@ -28,6 +28,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       time: $("#time")
     },
     title: title,
+    setVideo: function () {
+      th.player.attr("poster", th.poster);
+      th.player.attr("src", th.video);
+    },
     playlist: {
       currentVideo: 0,
       setHeight: function () {
@@ -61,7 +65,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           'url': "chapters/interactive.json",
           'dataType': "json",
           'success': function (data) {
-            console.log(data);
+<!--            console.log(data);-->
             th.interactive.data = data;
           }
         });
@@ -401,31 +405,38 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   } else {
     th.color = false;
   }
-  if (th.title === "playlist") {
-    th.playlist.setHeight();
-    title = th.playlist.getPlaylist()[th.playlist.currentVideo];
+  ///detect type of session--iinteractive, playlist, actor, or video
+    console.log( th.title );
+  switch (th.title) {
+    case "interactive":
+      th.interactive.getChapter();
+      title = th.interactive.data[th.interactive.chapter].video;
+          th.path = "videos/";
+      th.video = th.path + title + ".mp4";
+      th.poster = "images/poster.jpg";
+      break;
+    case "playlist":
+      th.playlist.setHeight();
+      title = th.playlist.getPlaylist()[th.playlist.currentVideo];
+      break;
+    default:
+      if (actor === undefined || actor === "") {
+        th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
+        th.video = th.path + title + ".mp4";
+        th.poster = th.path + title + ".jpg";
+      } else {
+        th.path = "https://www.websitetalkingheads.com/spokespeople/";
+        th.video = th.path + "videos/" + title + ".mp4";
+        th.poster = th.path + "posters/" + title + ".jpg";
+      }
   }
-  if (th.title === "interactive") {
-    title = th.interactive.data[th.interactive.chapter].video;
-    th.path = "videos/";
-    th.video = th.path + title + ".mp4";
-    th.poster = th.path + title + ".jpg";
-  } else if (actor === undefined || actor === "") {
-    th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
-    th.video = th.path + title + ".mp4";
-    th.poster = th.path + title + ".jpg";
-  } else {
-    th.path = "https://www.websitetalkingheads.com/spokespeople/";
-    th.video = th.path + "videos/" + title + ".mp4";
-    th.poster = th.path + "posters/" + title + ".jpg";
-  }
+
+  //--------------------Get saved volume
   if (sessionStorage.volume) {
     th.volume = sessionStorage.volume;
     th.btns.volumeBar.val(th.volume);
     th.player[0].volume = th.volume;
   }
-  th.player.attr("poster", th.poster);
-  th.player.attr("src", th.video);
   //--------------------------------Set autostart
   switch (th.autostart) {
     case "no":
@@ -459,6 +470,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.holder.addClass("mouse-controls");
       break;
   }
+  th.setVideo();
   th.setHeight();
   th.setProgressBar();
   //video ended function
