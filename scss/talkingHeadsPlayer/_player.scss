@@ -77,22 +77,22 @@ $bigPlayBtn-width: 160px;
 	top: calc(50% - (#{$bigPlayBtn-height}/2));
 	margin: auto;
 	border-radius: 16px;
-	border: 3px solid rgba($primary, .7);
-	background-color: rgba($dark, .7);
+	border: 3px solid rgba($dark, .7);
+	background-color: rgba($primary, .7);
 	transition: background-color 0.5s ease;
 	transition: border-color 0.5s ease;
 	&:hover {
-		background-color: rgba($primary, .7);
-		border-color: rgba($dark, .7);
+		background-color: rgba($dark, .7);
+		border-color: rgba($primary, .7);
 	}
 	&:before {
 		position: absolute;
-		content: url(https://www.websitetalkingheads.com/ivideo/BigPlayBtn.gif);
+		content: url(btns/BigPlayBtn.gif);
 		left: calc(50% - (#{128px}/2));
 		top: calc(50% - (#{64px}/2));
         @media (max-width: 576px) {
             position: absolute;
-            content: url(https://www.websitetalkingheads.com/ivideo/SmallPlayBtn.gif);
+            content: url(btns/SmallPlayBtn.gif);
             left: calc(50% - (64px/2));
             top: calc(50% - (32px/2));
         }

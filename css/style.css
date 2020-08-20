@@ -8729,25 +8729,25 @@ a.text-dark:hover, a.text-dark:focus {
   top: calc(50% - (76px/2));
   margin: auto;
   border-radius: 16px;
-  border: 3px solid rgba(0, 123, 255, 0.7);
-  background-color: rgba(0, 81, 128, 0.7);
+  border: 3px solid rgba(0, 81, 128, 0.7);
+  background-color: rgba(0, 123, 255, 0.7);
   transition: background-color 0.5s ease;
   transition: border-color 0.5s ease;
 }
 #bigPlayBtn:hover, .bigPlayBtn:hover {
-  background-color: rgba(0, 123, 255, 0.7);
-  border-color: rgba(0, 81, 128, 0.7);
+  background-color: rgba(0, 81, 128, 0.7);
+  border-color: rgba(0, 123, 255, 0.7);
 }
 #bigPlayBtn:before, .bigPlayBtn:before {
   position: absolute;
-  content: url(https://www.websitetalkingheads.com/ivideo/BigPlayBtn.gif);
+  content: url(btns/BigPlayBtn.gif);
   left: calc(50% - (128px/2));
   top: calc(50% - (64px/2));
 }
 @media (max-width: 576px) {
   #bigPlayBtn:before, .bigPlayBtn:before {
     position: absolute;
-    content: url(https://www.websitetalkingheads.com/ivideo/SmallPlayBtn.gif);
+    content: url(btns/SmallPlayBtn.gif);
     left: calc(50% - (64px/2));
     top: calc(50% - (32px/2));
   }
