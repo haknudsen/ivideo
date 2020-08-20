@@ -17,7 +17,7 @@
     <div class="container">
       <div id="video">
         <div class="embed-responsive embed-responsive-4by3">
-          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-playlist.php?video=playlist&autostart=no&controls=mouse&captions=false&color=FF7D00&type=Typography"></iframe>
+          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-playlist.php?video=playlist&autostart=no&controls=mouse&captions=false&color=false&type=Typography"></iframe>
         </div>
       </div>
     </div>

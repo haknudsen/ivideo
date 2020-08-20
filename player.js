@@ -52,6 +52,23 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         return playlistList;
       }
     },
+    interactive: {
+      chapter: 0,
+      getChapter: function () {
+        let json = (function () {
+          $.ajax({
+            'async': false,
+            'global': false,
+            'url': "chapters/interactive.json",
+            'dataType': "json",
+            'success': function (data) {
+              json = data;
+            }
+          });
+          return json;
+        })();
+      }
+    },
     captions: {
       track: '<track src="https://www.websitetalkingheads.com/ivideo/captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >',
       use: function () {
@@ -206,6 +223,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.btns.mute.addClass("btn-unmute");
           th.btns.mute.removeClass("btn-mute");
         } else {
+
           th.btns.mute.addClass("btn-white-unmute");
           th.btns.mute.removeClass("btn-white-mute");
         }
@@ -390,6 +408,11 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.playlist.setHeight();
     title = th.playlist.getPlaylist()[th.playlist.currentVideo];
   }
+    console.log("title= " + th.title  );
+  if (th.title === "interactive") {
+    let info = th.interactive.getChapter();
+   console.log( info, th.interactive.chapter );
+  }
   if (actor === undefined || actor === "") {
     th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
     th.video = th.path + title + ".mp4";
@@ -471,7 +494,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     if (!th.started) {
       th.holder.unbind();
       th.started = true;
-        th.btnFunctions();
+      th.btnFunctions();
     }
     th.playlist.newVideo();
   });
