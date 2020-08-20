@@ -88,13 +88,10 @@ $bigPlayBtn-width: 160px;
 	&:before {
 		position: absolute;
 		content: url(btns/BigPlayBtn.gif);
-		left: calc(50% - (#{128px}/2));
-		top: calc(50% - (#{64px}/2));
+            margin: 6px 16px;
         @media (max-width: 576px) {
-            position: absolute;
             content: url(btns/SmallPlayBtn.gif);
-            left: calc(50% - (64px/2));
-            top: calc(50% - (32px/2));
+            margin: 0 8px;
         }
 	}    
     @media (max-width: 576px) {
