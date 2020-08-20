@@ -8678,7 +8678,7 @@ a.text-dark:hover, a.text-dark:focus {
   border: #005180 thin solid;
   border-radius: 2px;
   color: #C4EAFF;
-  transition: opacity 0.2s;
+  transition: opacity 0.5s;
   opacity: 0;
 }
 #controls .player-btn {
@@ -8725,8 +8725,8 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 0;
   cursor: pointer;
   opacity: 0.9;
-  left: calc(50% - (160px/2));
-  top: calc(50% - (76px/2));
+  left: auto;
+  top: auto;
   margin: auto;
   border-radius: 16px;
   border: 3px solid rgba(0, 81, 128, 0.7);

@@ -38,7 +38,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         let w = th.holder.width();
         let h = (w / 16) * 3;
         $("#playlist").height(h);
-        $("#bigPlayBtn").css("top", (w / 16) * 4);
       },
       newVideo: function () {
         th.player.attr("poster", th.poster);
@@ -121,6 +120,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       let h = (w / 16) * 9;
       th.holder.height(h);
       th.container.controls.css("top", h - 42);
+        $("#bigPlayBtn").css({"top": (w / 16) * 4,
+                             "left": (w/2)-($("#bigPlayBtn").innerWidth()/2)});
     },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {
@@ -175,7 +176,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.playToggle.addClass("btn-white-pause");
         th.btns.playToggle.removeClass("btn-white-play");
       }
-      th.btns.bigPlayBtn.hide("slow");
+      th.btns.bigPlayBtn.fadeOut("slow");
     },
     showPlay: function () {
       if (th.color === false) {
@@ -185,16 +186,16 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.playToggle.removeClass("btn-white-pause");
         th.btns.playToggle.addClass("btn-white-play");
       }
-      th.btns.bigPlayBtn.show("slow");
+      th.btns.bigPlayBtn.fadeIn("slow");
     },
     playToggle: function () {
       if (th.player[0].paused) {
-        th.btns.bigPlayBtn.hide("slow");
+        th.btns.bigPlayBtn.fadeOut("slow");
         th.player[0].play();
         th.showPause();
       } else {
         th.player[0].pause();
-        th.btns.bigPlayBtn.show("slow");
+        th.btns.bigPlayBtn.fadeIn("slow");
         th.showPlay();
       }
     },
@@ -246,7 +247,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.btns.progress.css("width", w + '%');
       th.player[0].pause();
       th.player[0].currentTime = th.player[0].duration * w;
-      th.btns.bigPlayBtn.hide("slow");
+      th.btns.bigPlayBtn.fadeOut("slow");
       th.player[0].play();
 
     },
@@ -310,7 +311,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       if (promise !== undefined) {
         promise.then(_ => {
           th.showPause();
-          th.btns.bigPlayBtn.hide("slow");
+          th.btns.bigPlayBtn.fadeOut("slow");
         }).catch(error => {
           th.autostart = "mute";
           th.playMuted();
@@ -323,7 +324,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.player.attr('loop', 'loop');
       th.btns.mute.addClass("btn-unmute");
       th.btns.mute.removeClass("btn-mute");
-      th.btns.bigPlayBtn.show("slow");
+      th.btns.bigPlayBtn.fadeIn("slow");
       th.player[0].play();
       th.holder.click(function () {
         th.holder.unbind();
@@ -406,7 +407,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.color = false;
   }
   ///detect type of session--iinteractive, playlist, actor, or video
-    console.log( th.title );
   switch (th.title) {
     case "interactive":
       th.interactive.getChapter();
