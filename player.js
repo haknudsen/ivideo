@@ -166,8 +166,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       });
       th.btns.width += 6 - $("#progress-bar").outerWidth();
       th.btns.progressBarWidth = (th.container.barWidth - th.btns.width);
-        console.log( th.container.barWidth, th.btns.width );
-        console.log( th.btns.progressBarWidth  );
       $("#progress-bar").outerWidth(th.btns.progressBarWidth);
     },
     preLoad: function () {
@@ -464,7 +462,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   }
 
 
-  th.setAutostart();
   th.setControls();
   th.setColor();
   th.getTitle();
@@ -473,6 +470,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   th.checkVolume();
   th.captions.use();
   th.setProgressBar();
+  th.setAutostart();
   //video ended function
   th.player[0].onended = function () {
     if (th.title === "playlist") {
