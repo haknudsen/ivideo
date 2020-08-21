@@ -19,7 +19,7 @@
   <section class="jumbotron">
     <div class="container container-video">
       <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=interactive&autostart=yes&controls=mouse&captions=false&color=false"></iframe>
+        <iframe class="embed-responsive-item" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src="ivideo-player.php?video=interactive&autostart=no&controls=mouse&captions=false&color=false"></iframe>
       </div>
     </div>
   </section>

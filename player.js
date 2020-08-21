@@ -64,7 +64,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           'url': "chapters/interactive.json",
           'dataType': "json",
           'success': function (data) {
-<!--            console.log(data);-->
+            <!--            console.log(data);-->
             th.interactive.data = data;
           }
         });
@@ -76,9 +76,32 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         if (captions === "true") {
           return true;
         } else {
+          th.btns.captions.css({
+            "width": "0",
+            "margin": "0"
+          });
           return false;
         }
-      }
+      },
+      checkCaptions: function () {
+        if (th.captions.use() === "true") {
+          th.controls = "mouse";
+          th.player[0].prepend(th.captions.track);
+        }
+        console.log(th.captions.track);
+      },
+      captionToggle: function () {
+        th.curCaption = th.player[0].textTracks[0].mode;
+        if (th.curCaption === "showing") {
+          th.player[0].textTracks[0].mode = 'hidden';
+          th.btns.captions.removeClass("btn-captions");
+          th.btns.captions.addClass("btn-captions-off");
+        } else {
+          th.player[0].textTracks[0].mode = 'showing';
+          th.btns.captions.removeClass("btn-captions-off");
+          th.btns.captions.addClass("btn-captions");
+        }
+      },
     },
     color: color,
     setColor: function () {
@@ -120,9 +143,11 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       let h = (w / 16) * 9;
       th.holder.height(h);
       th.container.controls.css("top", h - 42);
-        $("#bigPlayBtn").css({"top": (w / 16) * 4,
-                             "left": (w/2)-($("#bigPlayBtn").innerWidth()/2),
-                             "opacity":0.9});
+      $("#bigPlayBtn").css({
+        "top": (w / 16) * 4,
+        "left": (w / 2) - ($("#bigPlayBtn").innerWidth() / 2),
+        "opacity": 0.9
+      });
     },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {
@@ -292,18 +317,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       }
 
     },
-    captionToggle: function () {
-      th.curCaption = th.player[0].textTracks[0].mode;
-      if (th.curCaption === "showing") {
-        th.player[0].textTracks[0].mode = 'hidden';
-        th.btns.captions.removeClass("btn-captions");
-        th.btns.captions.addClass("btn-captions-off");
-      } else {
-        th.player[0].textTracks[0].mode = 'showing';
-        th.btns.captions.removeClass("btn-captions-off");
-        th.btns.captions.addClass("btn-captions");
-      }
-    },
     goFullScreen: function () {
       th.player[0].requestFullscreen();
     },
@@ -372,7 +385,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.changeTime(event.offsetX);
             break;
           case "btn-captions":
-            th.captionToggle();
+            th.captions.captionToggle();
             break;
           case "btn-fullscreen":
             th.goFullScreen();
@@ -381,6 +394,13 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             //  console.log("click default-" + event.target.id);
         }
       });
+    },
+    checkVolume: function () {
+      if (sessionStorage.volume) {
+        th.volume = sessionStorage.volume;
+        th.btns.volumeBar.val(th.volume);
+        th.player[0].volume = th.volume;
+      }
     }
   }
 
@@ -396,116 +416,105 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   } else {
     th.controls = controls;
   }
-  if (th.captions.use() !== true) {
-    th.btns.captions.css({
-      "width": "0",
-      "margin": "0"
-    });
-  }
-  if (th.color.length === 6) {
-    th.setColor();
-  } else {
-    th.color = false;
-  }
-  ///detect type of session--iinteractive, playlist, actor, or video
-  switch (th.title) {
-    case "interactive":
-      th.interactive.getChapter();
-      title = th.interactive.data[th.interactive.chapter].video;
-          th.path = "videos/";
-      th.video = th.path + title + ".mp4";
-      th.poster = "images/poster.jpg";
-      break;
-    case "playlist":
-      th.playlist.setHeight();
-      title = th.playlist.getPlaylist()[th.playlist.currentVideo];
-      break;
-    default:
-      if (actor === undefined || actor === "") {
-        th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
-        th.video = th.path + title + ".mp4";
-        th.poster = th.path + title + ".jpg";
-      } else {
-        th.path = "https://www.websitetalkingheads.com/spokespeople/";
-        th.video = th.path + "videos/" + title + ".mp4";
-        th.poster = th.path + "posters/" + title + ".jpg";
-      }
-  }
 
-  //--------------------Get saved volume
-  if (sessionStorage.volume) {
-    th.volume = sessionStorage.volume;
-    th.btns.volumeBar.val(th.volume);
-    th.player[0].volume = th.volume;
-  }
-  //--------------------------------Set autostart
-  switch (th.autostart) {
-    case "no":
-      th.posterStart();
-      break;
-    case "yes":
-      th.tryAutostart();
-      break;
-    case "mute":
-      th.playMuted();
-      break;
-    default:
-      th.posterStart();
-      break;
-  }
-  //-----------------------Check for CC
-  if (th.captions.use === "true") {
-    th.controls = "mouse";
-    th.player.prepend(th.captions.track);
-  }
-  //-------------------------------Set Controls
-  switch (th.controls) {
-    case "true":
-      $("#controls").addClass("visible");
-      $("#controls").css("opacity", 1);
-      break;
-    case "false":
-      $("#controls").addClass("invisible");
-      break;
-    default:
-      th.holder.addClass("mouse-controls");
-      break;
-  }
-  th.setVideo();
-  th.setHeight();
-  th.setProgressBar();
-  //video ended function
-  th.player[0].onended = function () {
-    if (th.title === "playlist") {
-      th.playlist.currentVideo++;
-      title = th.playlist.getPlaylist()[th.playlist.currentVideo];
+if (th.color.length === 6) {
+  th.setColor();
+} else {
+  th.color = false;
+}
+///detect type of session--iinteractive, playlist, actor, or video
+switch (th.title) {
+  case "interactive":
+    th.interactive.getChapter();
+    title = th.interactive.data[th.interactive.chapter].video;
+    th.path = "videos/";
+    th.video = th.path + title + ".mp4";
+    th.poster = "images/poster.jpg";
+    break;
+  case "playlist":
+    th.playlist.setHeight();
+    title = th.playlist.getPlaylist()[th.playlist.currentVideo];
+    break;
+  default:
+    if (actor === undefined || actor === "") {
+      th.path = "https://www.websitetalkingheads.com/ivideo/videos/";
+      th.video = th.path + title + ".mp4";
       th.poster = th.path + title + ".jpg";
-      th.video = th.path + title + ".mp4";
-      th.playlist.newVideo();
+    } else {
+      th.path = "https://www.websitetalkingheads.com/spokespeople/";
+      th.video = th.path + "videos/" + title + ".mp4";
+      th.poster = th.path + "posters/" + title + ".jpg";
+    }
+}
 
-    }
-    if (th.autostart != "mute") {
-      th.stopPlayer();
-    }
-  }
-  // Update the seek bar as the player plays
-  th.player[0].ontimeupdate = function () {
-    let progressBarLength = (th.player[0].currentTime / th.player[0].duration * 100);
-    th.btns.progress.css("width", progressBarLength + "%")
-    th.btns.time.text(th.showTime());
-  };
-  $(window).resize(function () {
-    th.setProgressBar();
-    th.setHeight();
-  });
-  $(".video").click(function () {
-    th.poster = th.path + this.title + ".jpg";
-    th.video = th.path + this.title + ".mp4";
-    if (!th.started) {
-      th.holder.unbind();
-      th.started = true;
-      th.btnFunctions();
-    }
+//--------------------Get saved volume
+//--------------------------------Set autostart
+switch (th.autostart) {
+  case "no":
+    th.posterStart();
+    break;
+  case "yes":
+    th.tryAutostart();
+    break;
+  case "mute":
+    th.playMuted();
+    break;
+  default:
+    th.posterStart();
+    break;
+}
+//-----------------------Check for CC
+
+//-------------------------------Set Controls
+switch (th.controls) {
+  case "true":
+    $("#controls").addClass("visible");
+    $("#controls").css("opacity", 1);
+    break;
+  case "false":
+    $("#controls").addClass("invisible");
+    break;
+  default:
+    th.holder.addClass("mouse-controls");
+    break;
+}
+th.setVideo();
+th.setHeight();
+th.checkVolume();
+th.captions.checkCaptions();
+th.setProgressBar();
+//video ended function
+th.player[0].onended = function () {
+  if (th.title === "playlist") {
+    th.playlist.currentVideo++;
+    title = th.playlist.getPlaylist()[th.playlist.currentVideo];
+    th.poster = th.path + title + ".jpg";
+    th.video = th.path + title + ".mp4";
     th.playlist.newVideo();
-  });
+
+  }
+  if (th.autostart != "mute") {
+    th.stopPlayer();
+  }
+}
+// Update the seek bar as the player plays
+th.player[0].ontimeupdate = function () {
+  let progressBarLength = (th.player[0].currentTime / th.player[0].duration * 100);
+  th.btns.progress.css("width", progressBarLength + "%")
+  th.btns.time.text(th.showTime());
+};
+$(window).resize(function () {
+  th.setProgressBar();
+  th.setHeight();
+});
+$(".video").click(function () {
+  th.poster = th.path + this.title + ".jpg";
+  th.video = th.path + this.title + ".mp4";
+  if (!th.started) {
+    th.holder.unbind();
+    th.started = true;
+    th.btnFunctions();
+  }
+  th.playlist.newVideo();
+});
 }
