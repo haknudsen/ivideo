@@ -442,7 +442,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       }
     },
     setAutostart: function () {
-      console.log(th.autostart);
       switch (th.autostart) {
         case "no":
           th.posterStart();
@@ -495,10 +494,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.setProgressBar();
     th.setHeight();
   });
-  th.player.bind("webkitfullscreenchange mozfullscreenchange fullscreenchange", function (e) {
-    var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
-    var event = state ? "FullscreenOn" : "FullscreenOff";
-    if (event === "FullscreenOff") {
+  th.player.bind("webkitfullscreenchange mozfullscreenchange fullscreenchange", function () {
+    let state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+    if (state === false) {
       th.setProgressBar();
     }
   });
