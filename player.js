@@ -149,22 +149,25 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       });
     },
     setProgressBar: function () {
-      if ($("#controls").outerWidth() < 500) {
+      if (th.container.barWidth < 500) {
         th.btns.volumeBar.css("display", "none");
         th.btns.volumeBar.width(0);
         th.btns.time.css("display", "none");
         th.btns.time.css("width", 0);
       } else {
-        var newWidth = parseInt($("#controls").outerWidth() / 8);
+        var newWidth = parseInt(th.container.barWidth / 8);
         th.btns.volumeBar.width(newWidth);
         th.btns.volumeBar.css("display", "block");
       }
+        th.btns.width = 0;
       $("#controls").children().each(function () {
         let x = $(this).outerWidth(true);
         th.btns.width += x;
       });
       th.btns.width += 6 - $("#progress-bar").outerWidth();
-      th.btns.progressBarWidth = ($("#controls").outerWidth() - th.btns.width) + "px";
+      th.btns.progressBarWidth = (th.container.barWidth - th.btns.width);
+        console.log( th.container.barWidth, th.btns.width );
+        console.log( th.btns.progressBarWidth  );
       $("#progress-bar").outerWidth(th.btns.progressBarWidth);
     },
     preLoad: function () {
@@ -439,26 +442,29 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.holder.addClass("mouse-controls");
           break;
       }
+    },
+    setAutostart: function () {
+      console.log(th.autostart);
+      switch (th.autostart) {
+        case "no":
+          th.posterStart();
+          break;
+        case "yes":
+          th.tryAutostart();
+          break;
+        case "mute":
+          th.playMuted();
+          break;
+        default:
+          th.autostart = "no";
+          th.posterStart();
+          break;
+      }
     }
   }
 
 
-  switch (th.autostart) {
-    case "no":
-      th.posterStart();
-      break;
-    case "yes":
-      th.tryAutostart();
-      break;
-    case "mute":
-      th.playMuted();
-      break;
-    default:
-      th.autostart = "no";
-      th.posterStart();
-      break;
-  }
-
+  th.setAutostart();
   th.setControls();
   th.setColor();
   th.getTitle();
@@ -490,6 +496,13 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   $(window).resize(function () {
     th.setProgressBar();
     th.setHeight();
+  });
+  th.player.bind("webkitfullscreenchange mozfullscreenchange fullscreenchange", function (e) {
+    var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+    var event = state ? "FullscreenOn" : "FullscreenOff";
+    if (event === "FullscreenOff") {
+      th.setProgressBar();
+    }
   });
   $(".video").click(function () {
     th.poster = th.path + this.title + ".jpg";
