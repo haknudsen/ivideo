@@ -74,11 +74,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       }
     },
     captions: {
-      track: '<track src="captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >',
       use: function () {
         if (captions === "true") {
           th.controls = "mouse";
-          th.player.prepend(th.captions.track);
+          th.player.prepend('<track src="captions/' + title + '.vtt" label="English" kind="captions" srclang="en-us" default >');
           return true;
         } else {
           th.btns.captions.css({
@@ -409,6 +408,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   //----end creation
 
   ///detect type of session--iinteractive, playlist, actor, or video
+  function getTitle(){
   switch (th.title) {
     case "interactive":
       th.interactive.getChapter();
@@ -432,8 +432,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.poster = th.path + "posters/" + title + ".jpg";
       }
   }
-
-  th.autostart = autostart;
+}
   switch (th.autostart) {
     case "no":
       th.posterStart();
@@ -462,6 +461,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.holder.addClass("mouse-controls");
       break;
   }
+    getTitle();
   th.setColor();
   th.setVideo();
   th.setHeight();
