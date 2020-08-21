@@ -121,7 +121,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.holder.height(h);
       th.container.controls.css("top", h - 42);
         $("#bigPlayBtn").css({"top": (w / 16) * 4,
-                             "left": (w/2)-($("#bigPlayBtn").innerWidth()/2)});
+                             "left": (w/2)-($("#bigPlayBtn").innerWidth()/2),
+                             "opacity":0.9});
     },
     setProgressBar: function () {
       if ($("#controls").outerWidth() < 500) {

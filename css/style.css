@@ -8724,7 +8724,7 @@ a.text-dark:hover, a.text-dark:focus {
   position: absolute;
   padding: 0;
   cursor: pointer;
-  opacity: 0.9;
+  opacity: 0;
   left: auto;
   top: auto;
   margin: auto;
