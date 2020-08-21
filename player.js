@@ -159,7 +159,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.volumeBar.width(newWidth);
         th.btns.volumeBar.css("display", "block");
       }
-        th.btns.width = 0;
+      th.btns.width = 0;
       $("#controls").children().each(function () {
         let x = $(this).outerWidth(true);
         th.btns.width += x;
@@ -241,12 +241,12 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.player[0].volume = th.volume;
       sessionStorage.volume = th.volume;
       if (th.player[0].muted) {
-        th.muteToggle();
+        th.mute.check();
       }
 
     },
-    muteToggle: function () {
-      if (th.player[0].muted === true) {
+    mute: {
+      toggleOn: function () {
         th.player[0].muted = false;
         if (th.color === false) {
           th.btns.mute.addClass("btn-unmute");
@@ -256,7 +256,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.btns.mute.addClass("btn-white-unmute");
           th.btns.mute.removeClass("btn-white-mute");
         }
-      } else {
+      },
+      toggleOff: function () {
         th.player[0].muted = true;
         if (th.color === false) {
           th.btns.mute.addClass("btn-mute");
@@ -265,8 +266,14 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.btns.mute.addClass("btn-white-mute");
           th.btns.mute.removeClass("btn-white-unmute");
         }
-      }
-
+      },
+        check:function(){
+            if(th.player[0].muted){
+                th.mute.toggleOn();
+            }else{
+                th.mute.toggleOff();
+            }
+        }
     },
     changeTime: function (offset) {
       let w = (offset / th.btns.progressBar.width());
@@ -341,6 +348,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.btns.bigPlayBtn.fadeIn("slow");
       th.player[0].play();
       th.holder.click(function () {
+          th.mute.toggleOff();
         th.holder.unbind();
         th.stopPlayer()
         th.started = true;
@@ -349,12 +357,12 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.player[0].play();
         th.showPause();
         th.btnFunctions();
+        console.log(event.target.id);
         if (event.target.id === "btn-fullscreen") {
           th.goFullScreen();
         }
         if (event.target.id === "volume-bar") {
           th.volumeChange();
-          th.muteToggle();
         }
       });
     },
@@ -378,7 +386,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.volumeChange();
             break;
           case "btn-mute":
-            th.muteToggle();
+            th.mute.check();
             break;
           case "progress":
           case "progress-bar":
