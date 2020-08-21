@@ -60,7 +60,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     },
     interactive: {
       chapter: 0,
-      getChapter: function () {
+      getLesson: function () {
         $.ajax({
           'async': false,
           'global': false,
@@ -413,7 +413,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     getTitle: function () {
       switch (th.title) {
         case "interactive":
-          th.interactive.getChapter();
+          th.interactive.getLesson();
           title = th.interactive.data[th.interactive.chapter].video;
           th.path = "videos/";
           th.video = th.path + title + ".mp4";
@@ -497,6 +497,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     let progressBarLength = (th.player[0].currentTime / th.player[0].duration * 100);
     th.btns.progress.css("width", progressBarLength + "%")
     th.btns.time.text(th.showTime());
+      console.log( th.interactive.data );
   };
   $(window).resize(function () {
     th.setProgressBar();
