@@ -425,14 +425,24 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.poster = th.path + "posters/" + title + ".jpg";
           }
       }
+    },
+    setControls: function () {
+      switch (th.controls) {
+        case "true":
+          $("#controls").addClass("visible");
+          $("#controls").css("opacity", 1);
+          break;
+        case "false":
+          $("#controls").addClass("invisible");
+          break;
+        default:
+          th.holder.addClass("mouse-controls");
+          break;
+      }
     }
   }
 
 
-  //----end creation
-
-  ///detect type of session--iinteractive, playlist, actor, or video
-  function getTitle() {}
   switch (th.autostart) {
     case "no":
       th.posterStart();
@@ -449,20 +459,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       break;
   }
 
-  switch (th.controls) {
-    case "true":
-      $("#controls").addClass("visible");
-      $("#controls").css("opacity", 1);
-      break;
-    case "false":
-      $("#controls").addClass("invisible");
-      break;
-    default:
-      th.holder.addClass("mouse-controls");
-      break;
-  }
-  th.getTitle();
+  th.setControls();
   th.setColor();
+  th.getTitle();
   th.setVideo();
   th.setHeight();
   th.checkVolume();
