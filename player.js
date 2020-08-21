@@ -60,6 +60,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     },
     interactive: {
       chapter: 0,
+      hotspot:0,
       getLesson: function () {
         $.ajax({
           'async': false,
@@ -267,13 +268,13 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.btns.mute.removeClass("btn-white-unmute");
         }
       },
-        check:function(){
-            if(th.player[0].muted){
-                th.mute.toggleOn();
-            }else{
-                th.mute.toggleOff();
-            }
+      check: function () {
+        if (th.player[0].muted) {
+          th.mute.toggleOn();
+        } else {
+          th.mute.toggleOff();
         }
+      }
     },
     changeTime: function (offset) {
       let w = (offset / th.btns.progressBar.width());
@@ -348,7 +349,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.btns.bigPlayBtn.fadeIn("slow");
       th.player[0].play();
       th.holder.click(function () {
-          th.mute.toggleOff();
+        th.mute.toggleOff();
         th.holder.unbind();
         th.stopPlayer()
         th.started = true;
@@ -497,7 +498,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     let progressBarLength = (th.player[0].currentTime / th.player[0].duration * 100);
     th.btns.progress.css("width", progressBarLength + "%")
     th.btns.time.text(th.showTime());
-      console.log( th.interactive.data );
+    console.log(th.interactive.data);
   };
   $(window).resize(function () {
     th.setProgressBar();
