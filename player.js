@@ -73,6 +73,20 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.interactive.data = data;
           }
         });
+      },
+      setHotspot: function (z) {
+        th.holder.append($('<div>', {
+          class: 'hotspot',
+          id: z.link
+        }).css({
+          "height": z.height + "%",
+          "width": z.width + "%",
+          "left": z.left + "%",
+          "top": z.top + "%",
+          "bottom": "auto",
+          "right": "auto"
+        }));
+          console.log( z );
       }
     },
     captions: {
@@ -500,10 +514,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     th.btns.progress.css("width", progressBarLength + "%")
     th.btns.time.text(th.showTime());
     if (th.interactive.data[th.interactive.chapter].hotspots.length > th.interactive.hotspot) {
-        console.log("hit"  );
       if (th.player[0].currentTime > th.interactive.data[th.interactive.chapter].hotspots[th.interactive.hotspot].time) {
-        th.interactive.time = 99999;
-        console.log(th.interactive.data[th.interactive.chapter].hotspots[th.interactive.hotspot].button);
+        th.interactive.setHotspot(th.interactive.data[th.interactive.chapter].hotspots[th.interactive.hotspot]);
         th.interactive.hotspot++;
       }
     }
