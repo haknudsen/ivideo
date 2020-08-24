@@ -1,8 +1,8 @@
 /* Sass Document */
 /* Interactive */
 .hotspot {
-    background-color: rgba($primary, 0.5);
-    border: thin solid $primary;
+    background-color: rgba($primary, 0.2);
+    border: thin solid rgba($primary, 0.5);
     position: absolute;
     cursor: pointer;
 }

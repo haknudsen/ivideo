@@ -109,6 +109,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           "right": "auto"
         }));
         console.log(z);
+          th.playToggle();
       }
     },
     captions: {
