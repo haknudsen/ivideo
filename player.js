@@ -168,7 +168,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           $("#btn-yes").click(function () {
             th.title = z[th.bookmark.current.chapter].title;
             th.interactive.setNewTitle();
-              th.player[0].currentTime = th.bookmark.current.time;
+            th.player[0].currentTime = th.bookmark.current.time;
             $("#videoModal").modal("hide");
           });
         }
@@ -352,7 +352,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.player[0].currentTime = th.player[0].duration * w;
       th.btns.bigPlayBtn.fadeOut("slow");
       th.player[0].play();
-
+      th.showPause();
     },
     showTime: function () {
       let cur = th.getTime(th.player[0].currentTime);

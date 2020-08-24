@@ -12,6 +12,9 @@
 <meta name="verify-v1" content="YNESpqoAwK51PmBV7/PFKLG0agx7AQPKhXXcYAXGGF8="/>
 <meta name="norton-safeweb-site-verification" content="iinbv24r-1ix20hgj5l94wz2rnn3aiwi0336hwysvvpiskquy6ijsh9wy12f3znbed-hz1ay8ppzhgqap-sicqtw6ui29d0wrfcpenudh1ml9xwjbej7u25xy9pnm6yr"/>
 <?php include("../includes/css-b4.php"); ?>
+<style type="text/css">
+    .container-video{max-width: 1310px}
+</style>
 </head>
 
 <body>
