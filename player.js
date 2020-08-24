@@ -3,7 +3,7 @@
 ////controls- true,false, mouse
 //  autostart- no, yes, mouse, mute
 
-
+let z ={};
 function createTalkingHead(title, autostart, controls, captions, color, actor) {
   var th = {
     title: title,
@@ -75,15 +75,15 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           }
         });
       },
-      setHotspot: function (z) {
+      setHotspot: function (sh) {
         th.holder.append($('<div>', {
           class: 'hotspot',
-          id: z.link
+          id:sh.link
         }).css({
-          "height": z.height + "%",
-          "width": z.width + "%",
-          "left": z.left + "%",
-          "top": z.top + "%",
+          "height":sh.height + "%",
+          "width":sh.width + "%",
+          "left":sh.left + "%",
+          "top":sh.top + "%",
           "bottom": "auto",
           "right": "auto"
         }));
@@ -452,8 +452,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       switch (th.title) {
         case "interactive":
           th.interactive.getLesson();
-              console.log( th.interactive.data );
-          title = th.interactive.data[th.interactive.chapter].video;
+          z = th.interactive.data[0].lesson.chapters;
+              console.log( z );
+          title = z[th.interactive.chapter].video;
           th.path = "videos/";
           th.video = th.path + title + ".mp4";
           th.poster = "images/poster.jpg";
@@ -537,9 +538,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     let progressBarLength = (th.player[0].currentTime / th.player[0].duration * 100);
     th.btns.progress.css("width", progressBarLength + "%")
     th.btns.time.text(th.showTime());
-    if (th.interactive.data[th.interactive.chapter].hotspots.length > th.interactive.hotspot) {
-      if (th.player[0].currentTime > th.interactive.data[th.interactive.chapter].hotspots[th.interactive.hotspot].time) {
-        th.interactive.setHotspot(th.interactive.data[th.interactive.chapter].hotspots[th.interactive.hotspot]);
+    if (z[th.interactive.chapter].hotspots.length > th.interactive.hotspot) {
+      if (th.player[0].currentTime > z[th.interactive.chapter].hotspots[th.interactive.hotspot].time) {
+        th.interactive.setHotspot(z[th.interactive.chapter].hotspots[th.interactive.hotspot]);
         th.interactive.hotspot++;
       }
     }
