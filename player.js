@@ -97,9 +97,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.bookmark.width("1.5rem");
       },
       setHotspot: function (sh) {
-        th.holder.append($('<div>', {
-          class: 'hotspot',
-          id: sh.link
+        th.holder.append($("<div>", {
+          class: "hotspot",
+          id: "hotspot",
+          alt: sh.link
         }).css({
           "height": sh.height + "%",
           "width": sh.width + "%",
@@ -109,7 +110,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           "right": "auto"
         }));
         console.log(z);
-          th.playToggle();
+        th.playToggle();
+      },
+      runHotspot: function () {
+        console.log(z[th.interactive.chapter].hotspots[th.interactive.hotspot-1]);
       }
     },
     captions: {
@@ -470,6 +474,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             break;
           case "btn-fullscreen":
             th.goFullScreen();
+            break;
+          case "hotspot":
+            th.interactive.runHotspot();
             break;
           default:
             //  console.log("click default-" + event.target.id);

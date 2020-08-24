@@ -8839,9 +8839,14 @@ video::cue(b) {
 /* Interactive */
 .hotspot {
   background-color: rgba(0, 123, 255, 0.2);
-  border: thin solid rgba(0, 123, 255, 0.5);
+  border: thin solid rgba(0, 123, 255, 0.3);
   position: absolute;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.hotspot:hover {
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=style.css.map */
