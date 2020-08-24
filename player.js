@@ -23,6 +23,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       stop: $('#btn-stop'),
       mute: $('#btn-mute'),
       captions: $('#btn-captions'),
+      bookmark: $("#btn-bookmark"),
       fullscreen: $('#btn-fullscreen'),
       started: false,
       progress: $("#progress"),
@@ -86,7 +87,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           "bottom": "auto",
           "right": "auto"
         }));
-          console.log( z );
+        console.log(z);
       }
     },
     captions: {
@@ -116,6 +117,11 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         }
       },
     },
+    bookmark: {
+      addBookmark: function () {
+
+      }
+    },
     setColor: function () {
       if (th.color.length === 6) {
         $("#controls").css({
@@ -133,6 +139,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         $("#btn-stop").removeClass("btn-stop").addClass("btn-white-stop");
         $("#btn-mute").removeClass("btn-unmute").addClass("btn-white-unmute");
         $("#btn-captions").removeClass("btn-captions").addClass("btn-white-captions");
+        $("#btn-bookmark").removeClass("btn-bookmark").addClass("btn-white-bookmark");
         $("#btn-fullscreen").removeClass("btn-fullscreen-enter").addClass("btn-white-fullscreen-enter");
         $("#time").css({
           "text-shadow": "1px 1px #" + color,
@@ -373,7 +380,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.player[0].play();
         th.showPause();
         th.btnFunctions();
-        console.log(event.target.id);
         if (event.target.id === "btn-fullscreen") {
           th.goFullScreen();
         }
@@ -408,6 +414,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           case "progress-bar":
             th.changeTime(event.offsetX);
             break;
+          case "btn-cbookmark":
+            th.bookmarks.addBookmark();
+            break;
           case "btn-captions":
             th.captions.captionToggle();
             break;
@@ -434,6 +443,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           th.path = "videos/";
           th.video = th.path + title + ".mp4";
           th.poster = "images/poster.jpg";
+          th.btns.bookmark.width("1.5rem");
           break;
         case "playlist":
           th.playlist.setHeight();

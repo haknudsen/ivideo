@@ -31,6 +31,7 @@
         <div class="progress" id="progress-bar" title="duration">
             <div id="progress" class="progress-bar progress-bar-striped" title="current time"></div>
         </div>
+        <div id="btn-bookmark" class="player-btn btn-bookmark" title="bookmark" accesskey="B"></div>
         <div id="btn-captions" class="player-btn btn-captions" title="toggle captions" accesskey="C"></div>
         <div id="btn-fullscreen" class="player-btn btn-fullscreen-enter" title="toggle full screen" accesskey="T"></div>
     </div>

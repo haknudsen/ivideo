@@ -8335,6 +8335,18 @@ a.text-dark:hover, a.text-dark:focus {
   filter: drop-shadow(0 1px #005180);
 }
 
+.btn-bookmark {
+  background: url("btns/bookmark-regular.svg") no-repeat;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  filter: drop-shadow(1px 1px #005180);
+}
+.btn-bookmark:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #005180);
+}
+
 .btn-fullscreen-enter {
   background: url("btns/expand-alt-regular.svg") no-repeat;
   background-repeat: no-repeat;
@@ -8451,6 +8463,18 @@ a.text-dark:hover, a.text-dark:focus {
   filter: drop-shadow(1px 1px #000);
 }
 .btn-white-unmute:hover {
+  opacity: .7;
+  filter: drop-shadow(0 1px #000);
+}
+
+.btn-white-bookmark {
+  background: url("btns/bookmark-white.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  filter: drop-shadow(1px 1px #000);
+}
+.btn-white-bookmark:hover {
   opacity: .7;
   filter: drop-shadow(0 1px #000);
 }
@@ -8705,6 +8729,9 @@ a.text-dark:hover, a.text-dark:focus {
 }
 #controls #volume-bar {
   margin: 2px 4px;
+}
+#controls #btn-bookmark {
+  width: 0;
 }
 #controls #time {
   padding: 0 4px;
