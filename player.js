@@ -3,9 +3,9 @@
 ////controls- true,false, mouse
 //  autostart- no, yes, mouse, mute
 
-let z = {};
 
 function createTalkingHead(title, autostart, controls, captions, color, actor) {
+  let z = {};
   var th = {
     title: title,
     autostart: autostart,
@@ -32,6 +32,17 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       progressBar: $("#progress-bar"),
       width: 0,
       time: $("#time")
+    },
+    play: function () {
+      th.started = true;
+      th.holder.unbind();
+      th.player[0].muted = false;
+      th.player[0].play();
+      th.showPause();
+      th.btnFunctions();
+    },
+    restart: function () {
+      th.player[0].currentTime = 0;
     },
     setVideo: function () {
       th.player.attr("poster", th.poster);
@@ -131,14 +142,22 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           chapter,
           time
         }
-        console.log("name", th.bookmark.title);
-        localStorage.setItem(bookmarkTitle, th.bookmark.data);
+        localStorage.setItem(th.bookmark.title, th.bookmark.data);
       },
       checkBookmark: function () {
         th.bookmark.title = th.user + "-" + th.interactive.data[0].lesson.title;
-          console.log( "checking bookmark",th.bookmark.title );
         if (localStorage.getItem(th.bookmark.title)) {
-          console.log("exists");
+          $(".modal-title").text("Bookmark Found");
+          $("#modal-message").text("Restart Course or go to bookmark");
+          $("#btn-yes").text("Go to Bookmark");
+          $("#btn-no").text("Restart Course");
+          $("#videoModal").modal();
+          $("#videoModal").on('hide.bs.modal', function () {
+            th.play();
+          });
+          $("#btn-yes").click(function () {
+            $("#videoModal").modal("hide");
+          });
         }
       }
     },
@@ -223,12 +242,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     posterStart: function () {
       th.preLoad();
       th.holder.click(function () {
-        th.started = true;
-        th.holder.unbind();
-        th.player[0].muted = false;
-        th.player[0].play();
-        th.showPause();
-        th.btnFunctions();
+        th.play();
         if (event.target.id === "btn-fullscreen") {
           th.goFullScreen();
         }
@@ -413,7 +427,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         //        console.log(event.target.id);
         switch (event.target.id) {
           case "btn-restart":
-            th.player.currentTime = 0;
+            th.restart();
             break;
           case "btn-play-toggle":
           case "player-holder":
