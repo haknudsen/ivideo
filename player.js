@@ -3,7 +3,8 @@
 ////controls- true,false, mouse
 //  autostart- no, yes, mouse, mute
 
-let z ={};
+let z = {};
+
 function createTalkingHead(title, autostart, controls, captions, color, actor) {
   var th = {
     title: title,
@@ -78,12 +79,12 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       setHotspot: function (sh) {
         th.holder.append($('<div>', {
           class: 'hotspot',
-          id:sh.link
+          id: sh.link
         }).css({
-          "height":sh.height + "%",
-          "width":sh.width + "%",
-          "left":sh.left + "%",
-          "top":sh.top + "%",
+          "height": sh.height + "%",
+          "width": sh.width + "%",
+          "left": sh.left + "%",
+          "top": sh.top + "%",
           "bottom": "auto",
           "right": "auto"
         }));
@@ -120,20 +121,26 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     user: "Andy",
     bookmark: {
       addBookmark: function () {
-        let chapter = th.interactive.data[th.interactive.chapter];
+        let chapter = th.interactive.chapter;
         let time = th.player[0].currentTime;
         let user = th.user;
+        let lesson = th.interactive.data[0].lesson.title;
         th.bookmark.data = {
           user,
+          lesson,
           chapter,
           time
         }
-        console.log(th.bookmark.data);
-        localStorage.setItem(th.bookmark.name(), th.user);
+        console.log("name", th.bookmark.title);
+        localStorage.setItem(bookmarkTitle, th.bookmark.data);
       },
-        name: function(){
-            th.interactive.data
+      checkBookmark: function () {
+        th.bookmark.title = th.user + "-" + th.interactive.data[0].lesson.title;
+          console.log( "checking bookmark",th.bookmark.title );
+        if (localStorage.getItem(th.bookmark.title)) {
+          console.log("exists");
         }
+      }
     },
     setColor: function () {
       if (th.color.length === 6) {
@@ -453,7 +460,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         case "interactive":
           th.interactive.getLesson();
           z = th.interactive.data[0].lesson.chapters;
-              console.log( z );
+          console.log(z);
           title = z[th.interactive.chapter].video;
           th.path = "videos/";
           th.video = th.path + title + ".mp4";
@@ -518,6 +525,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   th.checkVolume();
   th.captions.use();
   th.setProgressBar();
+  th.bookmark.checkBookmark();
   th.setAutostart();
   //video ended function
   th.player[0].onended = function () {
