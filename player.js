@@ -87,6 +87,15 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           }
         });
       },
+      setNewTitle: function () {
+        th.interactive.getLesson();
+        z = th.interactive.data[0].lesson.chapters;
+        title = z[th.interactive.chapter].video;
+        th.path = "videos/";
+        th.video = th.path + title + ".mp4";
+        th.poster = "images/poster.jpg";
+        th.btns.bookmark.width("1.5rem");
+      },
       setHotspot: function (sh) {
         th.holder.append($('<div>', {
           class: 'hotspot',
@@ -137,16 +146,17 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         let user = th.user;
         let lesson = th.interactive.data[0].lesson.title;
         th.bookmark.data = {
-          user,
-          lesson,
-          chapter,
-          time
+          "user": user,
+          "lesson": lesson,
+          "chapter": chapter,
+          "time": time
         }
-        localStorage.setItem(th.bookmark.title, th.bookmark.data);
+        localStorage.setItem(th.bookmark.title, JSON.stringify(th.bookmark.data));
       },
       checkBookmark: function () {
         th.bookmark.title = th.user + "-" + th.interactive.data[0].lesson.title;
         if (localStorage.getItem(th.bookmark.title)) {
+          th.bookmark.current = JSON.parse(localStorage.getItem(th.bookmark.title));
           $(".modal-title").text("Bookmark Found");
           $("#modal-message").text("Restart Course or go to bookmark");
           $("#btn-yes").text("Go to Bookmark");
@@ -156,6 +166,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.play();
           });
           $("#btn-yes").click(function () {
+            th.title = z[th.bookmark.current.chapter].title;
+            th.interactive.setNewTitle();
+              th.player[0].currentTime = th.bookmark.current.time;
             $("#videoModal").modal("hide");
           });
         }
@@ -472,14 +485,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     getTitle: function () {
       switch (th.title) {
         case "interactive":
-          th.interactive.getLesson();
-          z = th.interactive.data[0].lesson.chapters;
-          console.log(z);
-          title = z[th.interactive.chapter].video;
-          th.path = "videos/";
-          th.video = th.path + title + ".mp4";
-          th.poster = "images/poster.jpg";
-          th.btns.bookmark.width("1.5rem");
+          th.interactive.setNewTitle();
           break;
         case "playlist":
           th.playlist.setHeight();
@@ -530,7 +536,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     }
   }
 
-
+  ///Start Stuff Happening
   th.setControls();
   th.setColor();
   th.getTitle();
@@ -549,7 +555,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.poster = th.path + title + ".jpg";
       th.video = th.path + title + ".mp4";
       th.playlist.newVideo();
-
     }
     if (th.autostart != "mute") {
       th.stopPlayer();
