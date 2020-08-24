@@ -117,10 +117,23 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         }
       },
     },
+    user: "Andy",
     bookmark: {
       addBookmark: function () {
-
-      }
+        let chapter = th.interactive.data[th.interactive.chapter];
+        let time = th.player[0].currentTime;
+        let user = th.user;
+        th.bookmark.data = {
+          user,
+          chapter,
+          time
+        }
+        console.log(th.bookmark.data);
+        localStorage.setItem(th.bookmark.name(), th.user);
+      },
+        name: function(){
+            th.interactive.data
+        }
     },
     setColor: function () {
       if (th.color.length === 6) {
@@ -414,8 +427,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           case "progress-bar":
             th.changeTime(event.offsetX);
             break;
-          case "btn-cbookmark":
-            th.bookmarks.addBookmark();
+          case "btn-bookmark":
+            th.bookmark.addBookmark();
             break;
           case "btn-captions":
             th.captions.captionToggle();
@@ -439,6 +452,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       switch (th.title) {
         case "interactive":
           th.interactive.getLesson();
+              console.log( th.interactive.data );
           title = th.interactive.data[th.interactive.chapter].video;
           th.path = "videos/";
           th.video = th.path + title + ".mp4";
