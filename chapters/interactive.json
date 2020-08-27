@@ -1,0 +1,167 @@
+[{
+  "lesson": {
+    "title": "StatAlert-Notification",
+    "id": "ABQURDWOIUSDF",
+    "chapters": [{
+        "id": 1,
+        "title": "opening",
+        "video": "Part 1",
+        "hotspots": [{
+          "name": "next",
+          "time": 139,
+          "width": 28.1,
+          "height": 24.1,
+          "top": 58.3,
+          "left": 56.67,
+          "link": 1,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 2,
+        "title": "Part 2",
+        "video": "Part 2",
+        "hotspots": [{
+          "name": "circle",
+          "time": 55,
+          "width": 5,
+          "height": 9,
+          "top": 23.6,
+          "left": 81,
+          "link": 2,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 3,
+        "title": "Part 3",
+        "video": "Part 3",
+        "hotspots": [{
+          "name": "next",
+          "time": 58,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 3,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 4,
+        "title": "Part 4",
+        "video": "Part 4",
+        "hotspots": [{
+          "name": "next",
+          "time": 27,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 4,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 5,
+        "title": "Part 5",
+        "video": "Part 5",
+        "hotspots": [{
+          "name": "next",
+          "time": 12,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 5,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 6,
+        "title": "Part 6",
+        "video": "Part 6",
+        "hotspots": [{
+          "name": "next",
+          "time": 97,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 6,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 7,
+        "title": "Part 7",
+        "video": "Part 7",
+        "hotspots": [{
+          "name": "next",
+          "time": 14,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 7,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 8,
+        "title": "Part 8",
+        "video": "Part 8",
+        "hotspots": [{
+          "name": "next",
+          "time": 12,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 8,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 9,
+        "title": "Part 9",
+        "video": "Part 9",
+        "hotspots": [{
+          "name": "next",
+          "time": 16,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 9,
+          "pause": false,
+          "button": true
+        }]
+      },
+      {
+        "id": 10,
+        "title": "Part 10",
+        "video": "Part 10",
+        "hotspots": [{
+          "name": "next",
+          "time": 29,
+          "width": 30,
+          "height": 12,
+          "top": 75,
+          "left": 35,
+          "link": 10,
+          "pause": false,
+          "button": true
+        }]
+      }
+    ]
+  }
+}]
