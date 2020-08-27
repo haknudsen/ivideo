@@ -8767,7 +8767,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 #bigPlayBtn:before, .bigPlayBtn:before {
   position: absolute;
-  content: url(btns/BigPlayBtn.gif);
+  content: url(btns/main-play-btn.gif);
   margin: 6px 16px;
 }
 @media (max-width: 576px) {

@@ -90,7 +90,7 @@ $bigPlayBtn-width: 160px;
 	}
 	&:before {
 		position: absolute;
-		content: url(btns/BigPlayBtn.gif);
+		content: url(btns/main-play-btn.gif);
             margin: 6px 16px;
         @media (max-width: 576px) {
             content: url(btns/SmallPlayBtn.gif);
