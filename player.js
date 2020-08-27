@@ -55,14 +55,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         let h = (w / 16) * 3;
         $("#playlist").height(h);
       },
-      newVideo: function () {
-        th.player.attr("poster", th.poster);
-        th.player.attr("src", th.video);
-        th.stopPlayer();
-        setTimeout(function () {
-          th.playToggle();
-        }, 100);
-      },
       getPlaylist: function () {
         let playlistList = [];
         $('#myCarousel img').each(function () {
@@ -70,6 +62,14 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         });
         return playlistList;
       }
+    },
+    newVideo: function () {
+      th.player.attr("poster", th.poster);
+      th.player.attr("src", th.video);
+      th.stopPlayer();
+      setTimeout(function () {
+        th.playToggle();
+      }, 100);
     },
     interactive: {
       chapter: 0,
@@ -113,6 +113,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       },
       runHotspot: function () {
         console.log(z[th.interactive.chapter]);
+        th.video = th.path + z[th.interactive.chapter].video + ".mp4";
+        th.newVideo();
       }
     },
     captions: {
@@ -478,7 +480,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             if (event.target.className === "hotspot") {
               $("#player-holder").find(".hotspot").remove();
               th.interactive.chapter = event.target.id;
-                th.interactive.runHotspot();
+              th.interactive.runHotspot();
             }
         }
       })
@@ -562,7 +564,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       title = th.playlist.getPlaylist()[th.playlist.currentVideo];
       th.poster = th.path + title + ".jpg";
       th.video = th.path + title + ".mp4";
-      th.playlist.newVideo();
+      th.newVideo();
     }
     if (th.autostart != "mute") {
       th.stopPlayer();
@@ -598,6 +600,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       th.started = true;
       th.btnFunctions();
     }
-    th.playlist.newVideo();
+    th.newVideo();
   });
 }
