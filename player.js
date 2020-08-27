@@ -64,6 +64,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       }
     },
     newVideo: function () {
+      console.log(z[th.interactive.chapter]);
       th.player.attr("poster", th.poster);
       th.player.attr("src", th.video);
       th.stopPlayer();
@@ -97,6 +98,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.bookmark.width("1.5rem");
       },
       setHotspot: function (sh) {
+        console.log(sh);
         th.holder.append($("<div>", {
           class: "hotspot",
           id: sh.link,
@@ -116,6 +118,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       },
       runHotspot: function () {
         th.video = th.path + z[th.interactive.chapter].video + ".mp4";
+        th.interactive.hotspot = 0;
         th.newVideo();
       }
     },
@@ -165,7 +168,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.bookmark.title = th.user + "-" + th.interactive.data[0].lesson.title;
         if (localStorage.getItem(th.bookmark.title)) {
           th.bookmark.current = JSON.parse(localStorage.getItem(th.bookmark.title));
-            console.log( th.bookmark.current );
           $(".modal-title").text("Bookmark Found");
           $("#modal-message").text("Restart Course or go to bookmark");
           $("#btn-yes").text("Go to Bookmark");
@@ -174,8 +176,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           $("#videoModal").on('hide.bs.modal', function () {
             th.play();
           });
+          $("#btn-no").click(function () {
+            localStorage.removeItem(th.bookmark.title);
+          });
           $("#btn-yes").click(function () {
-              console.log( th.bookmark.current.chapter );
             th.video = th.path + z[th.bookmark.current.chapter].title + ".mp4";
             th.newVideo();
             th.player[0].currentTime = th.bookmark.current.time;
