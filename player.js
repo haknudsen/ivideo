@@ -97,7 +97,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.bookmark.width("1.5rem");
       },
       setHotspot: function (sh) {
-        console.log(sh);
         th.holder.append($("<div>", {
           class: "hotspot",
           id: sh.link,
@@ -110,11 +109,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           "bottom": "auto",
           "right": "auto"
         }));
-        console.log(z);
         th.playToggle();
       },
       runHotspot: function () {
-        console.log(z[th.interactive.chapter].hotspots[th.interactive.hotspot - 1]);
+        console.log(z[th.interactive.chapter]);
       }
     },
     captions: {
@@ -163,7 +161,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.bookmark.title = th.user + "-" + th.interactive.data[0].lesson.title;
         if (localStorage.getItem(th.bookmark.title)) {
           th.bookmark.current = JSON.parse(localStorage.getItem(th.bookmark.title));
-          console.log(th.bookmark.current);
           $(".modal-title").text("Bookmark Found");
           $("#modal-message").text("Restart Course or go to bookmark");
           $("#btn-yes").text("Go to Bookmark");
@@ -173,7 +170,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.play();
           });
           $("#btn-yes").click(function () {
-            console.log(th.bookmark.current.chapter);
             th.title = z[th.bookmark.current.chapter].title;
             th.interactive.setNewTitle();
             th.player[0].currentTime = th.bookmark.current.time;
@@ -479,10 +475,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.goFullScreen();
             break;
           default:
-            console.log("click default-" + event.target.id);
             if (event.target.className === "hotspot") {
               $("#player-holder").find(".hotspot").remove();
-              
+              th.interactive.chapter = event.target.id;
+                th.interactive.runHotspot();
             }
         }
       })
