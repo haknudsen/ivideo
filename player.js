@@ -64,7 +64,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       }
     },
     newVideo: function () {
-      console.log(z[th.interactive.chapter]);
       th.player.attr("poster", th.poster);
       th.player.attr("src", th.video);
       th.stopPlayer();
@@ -98,7 +97,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.bookmark.width("1.5rem");
       },
       setHotspot: function (sh) {
-        console.log(sh);
         th.holder.append($("<div>", {
           class: "hotspot",
           id: sh.link,
@@ -113,8 +111,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         }));
         if (sh.name === "circle") {
           $("#" + sh.link).css("border-radius", "50%");
-        }
-        th.playToggle();
+        }        
+        th.player[0].pause();
+        th.showPlay();
       },
       runHotspot: function () {
         th.video = th.path + z[th.interactive.chapter].video + ".mp4";
@@ -296,7 +295,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.playToggle.removeClass("btn-white-pause");
         th.btns.playToggle.addClass("btn-white-play");
       }
-      th.btns.bigPlayBtn.fadeIn("slow");
     },
     playToggle: function () {
       if (th.player[0].paused) {
@@ -555,6 +553,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
   }
 
   ///Start Stuff Happening
+  th.interactive.paused = false;
   th.setControls();
   th.setColor();
   th.getTitle();
