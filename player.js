@@ -111,7 +111,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         }));
         if (sh.name === "circle") {
           $("#" + sh.link).css("border-radius", "50%");
-        }        
+        }
         th.player[0].pause();
         th.showPlay();
       },
@@ -179,9 +179,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             localStorage.removeItem(th.bookmark.title);
           });
           $("#btn-yes").click(function () {
-            console.log( th.bookmark.current );
-              th.interactive.hotspot = 0;
-              th.interactive.chapter = th.bookmark.current.chapter;
+            th.interactive.hotspot = 0;
+            th.interactive.chapter = th.bookmark.current.chapter;
             th.video = th.path + z[th.bookmark.current.chapter].title + ".mp4";
             th.player.attr("src", th.video);
             th.player[0].currentTime = th.bookmark.current.time;
