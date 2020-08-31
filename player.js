@@ -97,6 +97,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.bookmark.width("1.5rem");
       },
       setHotspot: function (sh) {
+          console.log( sh );
         th.holder.append($("<div>", {
           class: "hotspot",
           id: sh.link,
@@ -109,7 +110,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           "bottom": "auto",
           "right": "auto"
         }));
-        if (sh.name === "circle") {
+        if (sh.type === "circle") {
           $("#" + sh.link).css("border-radius", "50%");
         }
         th.player[0].pause();
