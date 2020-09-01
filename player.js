@@ -177,26 +177,14 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     user: "Andy",
     bookmark: {
       addBookmark: function () {
-        let chapter = th.interactive.chapter;
-        let time = th.player[0].currentTime;
-        let user = th.user;
-        let lesson = th.interactive.data[0].lesson.title;
-        th.bookmark.data = {
-          "user": user,
-          "lesson": lesson,
-          "chapter": chapter,
-          "time": time
-        }
         th.interactive.storage.chapter = th.interactive.chapter;
         th.interactive.storage.time = th.player[0].currentTime;
-        localStorage.setItem(th.bookmark.title, JSON.stringify(th.bookmark.data));
-          
-          console.log(th.interactive.storage);
+        localStorage.setItem(th.bookmark.title, JSON.stringify(th.interactive.storage));
       },
       checkBookmark: function () {
         th.bookmark.title = th.user + "-" + th.interactive.data[0].lesson.title;
         if (localStorage.getItem(th.bookmark.title)) {
-          th.bookmark.current = JSON.parse(localStorage.getItem(th.bookmark.title));
+          th.interactive.storage = JSON.parse(localStorage.getItem(th.bookmark.title));
           $(".modal-title").text("Bookmark Found");
           $("#modal-message").text("Restart Course or go to bookmark");
           $("#btn-yes").text("Go to Bookmark");
@@ -210,10 +198,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           });
           $("#btn-yes").click(function () {
             th.interactive.hotspot = 0;
-            th.interactive.chapter = th.bookmark.current.chapter;
-            th.video = th.path + z[th.bookmark.current.chapter].title + ".mp4";
+            th.interactive.chapter = th.interactive.storage.chapter;
+            th.video = th.path + z[th.interactive.storage.chapter].title + ".mp4";
             th.player.attr("src", th.video);
-            th.player[0].currentTime = th.bookmark.current.time;
+            th.player[0].currentTime = th.interactive.storage.time;
             $("#videoModal").modal("hide");
           });
         }
