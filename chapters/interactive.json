@@ -174,7 +174,7 @@
           "height": 10,
           "top": 41.4,
           "left": 63,
-          "link": 10,
+          "link": 11,
           "pause": true,
           "button": true
         }]
@@ -182,15 +182,16 @@
       {
         "id": 11,
         "title": "Conclusion",
-        "video": "Complete",
+        "video": "Congradulations",
         "hotspots": [{
-          "type": "button",
-          "time": 156,
-          "width": 26.4,
-          "height": 10,
-          "top": 41.4,
-          "left": 63,
-          "link": 10,
+          "type": "score",
+          "content": "restart",
+          "time": 5.3,
+          "width": 50,
+          "height": 25,
+          "top": 62.5,
+          "left": 25,
+          "link": 0,
           "pause": true,
           "button": true
         }]

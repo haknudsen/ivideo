@@ -499,11 +499,17 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.goFullScreen();
             break;
           default:
-            if (event.target.className === "hotspot" || event.target.className === "hotbtn") {
+            console.log(event.target);
+            if (event.target.className === "hotspot") {
+              console.log("hit");
               $("#player-holder").find(".hotspot").remove();
-              th.interactive.chapter = event.target.id;
-              th.interactive.runHotspot();
+            } else {
+              console.log("#" + event.target.id);
+              $("#player-holder").find("#" + event.target.id).remove();
+
             }
+            th.interactive.chapter = event.target.id;
+            th.interactive.runHotspot();
         }
       })
     },
@@ -598,10 +604,12 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
     let progressBarLength = (th.player[0].currentTime / th.player[0].duration * 100);
     th.btns.progress.css("width", progressBarLength + "%")
     th.btns.time.text(th.showTime());
-    if (z[th.interactive.chapter].hotspots.length > th.interactive.hotspot) {
-      if (th.player[0].currentTime > z[th.interactive.chapter].hotspots[th.interactive.hotspot].time) {
-        th.interactive.setHotspot(z[th.interactive.chapter].hotspots[th.interactive.hotspot]);
-        th.interactive.hotspot++;
+    if (z[th.interactive.chapter].hotspots) {
+      if (z[th.interactive.chapter].hotspots.length > th.interactive.hotspot) {
+        if (th.player[0].currentTime > z[th.interactive.chapter].hotspots[th.interactive.hotspot].time) {
+          th.interactive.setHotspot(z[th.interactive.chapter].hotspots[th.interactive.hotspot]);
+          th.interactive.hotspot++;
+        }
       }
     }
   };
