@@ -97,21 +97,34 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.bookmark.width("1.5rem");
       },
       setHotspot: function (sh) {
-          console.log( sh );
-        th.holder.append($("<div>", {
-          class: "hotspot",
-          id: sh.link,
-          alt: sh.pause
-        }).css({
-          "height": sh.height + "%",
-          "width": sh.width + "%",
-          "left": sh.left + "%",
-          "top": sh.top + "%",
-          "bottom": "auto",
-          "right": "auto"
-        }));
-        if (sh.type === "circle") {
-          $("#" + sh.link).css("border-radius", "50%");
+        console.log(sh);
+        if (sh.type === "button") {
+          th.holder.append($("<div>", {
+            class: "hotbtn btn btn-primary btn-lg text-uppercase",
+            id: sh.link,
+            alt: sh.pause
+          }).css({
+            "bottom": th.container.controls.height() * 2 + "px",
+          }));
+          $("#" + sh.link).text(sh.content);
+          let btnWidth = (th.player.width() / 2) - ($("#" + sh.link).width() / 2);
+          $("#" + sh.link).css("left", btnWidth).delay(1000);
+        } else {
+          th.holder.append($("<div>", {
+            class: "hotspot",
+            id: sh.link,
+            alt: sh.pause
+          }).css({
+            "height": sh.height + "%",
+            "width": sh.width + "%",
+            "left": sh.left + "%",
+            "top": sh.top + "%",
+            "bottom": "auto",
+            "right": "auto"
+          }));
+          if (sh.type === "circle") {
+            $("#" + sh.link).css("border-radius", "50%");
+          }
         }
         th.player[0].pause();
         th.showPlay();
@@ -486,7 +499,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.goFullScreen();
             break;
           default:
-            if (event.target.className === "hotspot") {
+            if (event.target.className === "hotspot" || event.target.className === "hotbtn") {
               $("#player-holder").find(".hotspot").remove();
               th.interactive.chapter = event.target.id;
               th.interactive.runHotspot();

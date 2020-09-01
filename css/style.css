@@ -8767,7 +8767,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 #bigPlayBtn:before, .bigPlayBtn:before {
   position: absolute;
-  content: url(btns/Btn-Play-Morph.gif);
+  content: url(btns/main-play-btn.gif);
   margin: 6px 16px;
 }
 @media (max-width: 576px) {
@@ -8833,6 +8833,15 @@ video::cue {
 
 video::cue(b) {
   color: #fff;
+}
+
+.hotbtn {
+  position: absolute;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  top: auto;
+  text-align: center;
 }
 
 /* Sass Document */

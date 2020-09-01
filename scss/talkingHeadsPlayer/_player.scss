@@ -149,3 +149,11 @@ video::cue {
 video::cue(b) {
   color: $white;
 }
+.hotbtn{
+    position: absolute;
+	left: auto;
+	right: auto;
+	bottom: auto;
+	top: auto;
+    text-align: center;
+}
