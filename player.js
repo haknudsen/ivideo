@@ -84,6 +84,8 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           'success': function (data) {
             <!--            console.log(data);-->
             th.interactive.data = data;
+            th.interactive.storage = th.interactive.data[0].lesson;
+            th.interactive.storage.user = th.user;
           }
         });
       },
@@ -114,7 +116,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             }
           case "score":
             {
-              console.log(sh);
+              console.log(th.interactive.storage);
               break;
             }
           default:
@@ -185,7 +187,11 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           "chapter": chapter,
           "time": time
         }
+        th.interactive.storage.chapter = th.interactive.chapter;
+        th.interactive.storage.time = th.player[0].currentTime;
         localStorage.setItem(th.bookmark.title, JSON.stringify(th.bookmark.data));
+          
+          console.log(th.interactive.storage);
       },
       checkBookmark: function () {
         th.bookmark.title = th.user + "-" + th.interactive.data[0].lesson.title;
