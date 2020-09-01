@@ -97,38 +97,43 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.btns.bookmark.width("1.5rem");
       },
       setHotspot: function (sh) {
-        console.log(sh);
         switch (sh.type) {
           case "button":
-            th.holder.append($("<div>", {
-              class: "hotbtn btn btn-primary btn-lg text-uppercase",
-              id: sh.link,
-              alt: sh.pause
-            }).css({
-              "bottom": th.container.controls.height() * 2 + "px",
-            }));
-            $("#" + sh.link).text(sh.content);
-            let btnWidth = (th.player.width() / 2) - ($("#" + sh.link).width() / 2);
-            $("#" + sh.link).css("left", btnWidth).delay(1000);
-            break;
+            {
+              th.holder.append($("<div>", {
+                class: "hotbtn btn btn-primary btn-lg text-uppercase",
+                id: sh.link,
+                alt: sh.pause
+              }).css({
+                "bottom": th.container.controls.height() * 2 + "px",
+              }));
+              $("#" + sh.link).text(sh.content);
+              let btnWidth = (th.player.width() / 2) - ($("#" + sh.link).width() / 2);
+              $("#" + sh.link).css("left", btnWidth).delay(1000);
+              break;
+            }
           case "score":
-            console.log("score");
-            break;
+            {
+              console.log(sh);
+              break;
+            }
           default:
-            th.holder.append($("<div>", {
-              class: "hotspot",
-              id: sh.link,
-              alt: sh.pause
-            }).css({
-              "height": sh.height + "%",
-              "width": sh.width + "%",
-              "left": sh.left + "%",
-              "top": sh.top + "%",
-              "bottom": "auto",
-              "right": "auto"
-            }));
-            if (sh.type === "circle") {
-              $("#" + sh.link).css("border-radius", "50%");
+            {
+              th.holder.append($("<div>", {
+                class: "hotspot",
+                id: sh.link,
+                alt: sh.pause
+              }).css({
+                "height": sh.height + "%",
+                "width": sh.width + "%",
+                "left": sh.left + "%",
+                "top": sh.top + "%",
+                "bottom": "auto",
+                "right": "auto"
+              }));
+              if (sh.type === "circle") {
+                $("#" + sh.link).css("border-radius", "50%");
+              }
             }
         }
         th.player[0].pause();
@@ -504,14 +509,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             th.goFullScreen();
             break;
           default:
-            console.log(event.target);
             if (event.target.className === "hotspot") {
-              console.log("hit");
               $("#player-holder").find(".hotspot").remove();
             } else {
-              console.log("#" + event.target.id);
               $("#player-holder").find("#" + event.target.id).remove();
-
             }
             th.interactive.chapter = event.target.id;
             th.interactive.runHotspot();
