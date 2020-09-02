@@ -75,9 +75,10 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       chapter: 0,
       hotspot: 0,
       time: 1,
-        getTime:function(c){
-            return th.interactive.storage.chapters[c].startTime - th.interactive.storage.chapters[c].endTime;
-        },
+      getTime: function (c) {
+        let timeDifference = th.interactive.storage.chapters[c].endTime - th.interactive.storage.chapters[c].startTime;
+        return Math.floor(timeDifference / 1000 );
+      },
       getLesson: function () {
         $.ajax({
           'async': false,
@@ -119,16 +120,27 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             }
           case "score":
             {
-                if(sh.content === "time"){
-        console.log(th.interactive.storage.chapters[th.interactive.chapter - 1]);
-                    let i =0;
-                    let total = 0;
-                    while (i<th.interactive.chapters.length){
-                        total = total + th.interactive.getTime(i);
-                        console.log(total);
-                    }
-                    
+              if (sh.content === "time") {
+                let i = 0;
+                let total = 0;
+                while (i < th.interactive.storage.chapters.length - 1) {
+                    let curTime = th.interactive.getTime(i);
+                  total = total + curTime;
+                  console.log(i + "-" + curTime);
+                  i++;
                 }
+                th.holder.append($("<h1>", {
+                  class: "hotbtn text-white",
+                  id: sh.link,
+                  alt: sh.pause
+                }).css({
+                  "bottom": th.container.controls.height() * 4 + "px",
+                }));
+
+                $("#" + sh.link).text("Time spent on this course: " + th.getTime( total));
+                let btnWidth = (th.player.width() / 2) - ($("#" + sh.link).width() / 2);
+                $("#" + sh.link).css("left", btnWidth).delay(1000);
+              }
               break;
             }
           default:
@@ -155,6 +167,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       },
       runHotspot: function () {
         th.interactive.storage.chapters[th.interactive.chapter - 1].endTime = $.now();
+        th.interactive.storage.chapters[th.interactive.chapter].startTime = $.now();
         th.video = th.path + z[th.interactive.chapter].video + ".mp4";
         th.interactive.hotspot = 0;
         th.newVideo();
