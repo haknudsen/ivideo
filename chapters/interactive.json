@@ -59,8 +59,8 @@
           "time": 29,
           "width": 9.3,
           "height": 8.3,
-          "top": 30.5,
-          "left": 54.3,
+          "top": 26.3,
+          "left": 68.4,
           "link": 4,
           "pause": true,
           "button": true
@@ -185,8 +185,8 @@
         "video": "Congradulations",
         "hotspots": [{
           "type": "score",
-          "content": "restart",
-          "time": 5.3,
+          "content": "time",
+          "time": 5.2,
           "width": 50,
           "height": 25,
           "top": 62.5,

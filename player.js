@@ -75,6 +75,9 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
       chapter: 0,
       hotspot: 0,
       time: 1,
+        getTime:function(c){
+            return th.interactive.storage.chapters[c].startTime - th.interactive.storage.chapters[c].endTime;
+        },
       getLesson: function () {
         $.ajax({
           'async': false,
@@ -82,7 +85,6 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
           'url': "chapters/interactive.json",
           'dataType': "json",
           'success': function (data) {
-            <!--            console.log(data);-->
             th.interactive.data = data;
             th.interactive.storage = th.interactive.data[0].lesson;
             th.interactive.storage.user = th.user;
@@ -97,6 +99,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.video = th.path + title + ".mp4";
         th.poster = "images/poster.jpg";
         th.btns.bookmark.width("1.5rem");
+        th.interactive.storage.chapters[th.interactive.chapter].startTime = $.now();
       },
       setHotspot: function (sh) {
         switch (sh.type) {
@@ -116,7 +119,16 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
             }
           case "score":
             {
-              console.log(th.interactive.storage);
+                if(sh.content === "time"){
+        console.log(th.interactive.storage.chapters[th.interactive.chapter - 1]);
+                    let i =0;
+                    let total = 0;
+                    while (i<th.interactive.chapters.length){
+                        total = total + th.interactive.getTime(i);
+                        console.log(total);
+                    }
+                    
+                }
               break;
             }
           default:
@@ -142,6 +154,7 @@ function createTalkingHead(title, autostart, controls, captions, color, actor) {
         th.showPlay();
       },
       runHotspot: function () {
+        th.interactive.storage.chapters[th.interactive.chapter - 1].endTime = $.now();
         th.video = th.path + z[th.interactive.chapter].video + ".mp4";
         th.interactive.hotspot = 0;
         th.newVideo();
